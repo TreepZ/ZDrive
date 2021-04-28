@@ -27,14 +27,11 @@ namespace ZDrive.Services
             server.SaveChanges();
         }
 
-        public void DeleteUser(User u)
+        public void DeleteUser(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public User GetUser(int id)
-        {
-            throw new NotImplementedException();
+            User @user = server.Users.Where(us => us.UserId == id).FirstOrDefault();
+            server.Users.Remove(@user);
+            server.SaveChanges();
         }
 
         public void Update(User u)

@@ -122,3 +122,5 @@ ZDrive/obj/Debug/netcoreapp3.1/ZDrive.assets.cache
 ZDrive/obj/Debug/netcoreapp3.1/ZDrive.csprojAssemblyReference.cache
 ZDrive/obj/*
 ZDrive/bin/*
+ZDrive/ZDrive.csproj.user
+*.user

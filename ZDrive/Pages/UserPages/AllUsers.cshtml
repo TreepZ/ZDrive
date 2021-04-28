@@ -33,6 +33,7 @@
                 @if (user.UserType == "Driver")
                 {
                     <td><a href="/Index">Cars</a></td>
+                    <td><a asp-page="/RoutePages/UserRoutes" asp-route-uid="@user.UserId">Routes</a></td>
                 }
             </tr>
         }

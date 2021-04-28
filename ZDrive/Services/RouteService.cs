@@ -17,7 +17,14 @@ namespace ZDrive.Services
         }
         public void AddRoute(Route r)
         {
-            throw new NotImplementedException();
+            server.Routes.Add(r);
+
+            server.SaveChanges();
+        }
+
+        public IEnumerable<Route> AllRoutes()
+        {
+            return server.Routes;
         }
 
         public void DeleteRoute(Route r)

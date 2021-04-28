@@ -21,6 +21,11 @@ namespace ZDrive.Services
             server.SaveChanges();
         }
 
+        public IEnumerable<Stop> AllStops()
+        {
+            return server.Stops;
+        }
+
         public void DeleteStop(Stop s)
         {
             throw new NotImplementedException();

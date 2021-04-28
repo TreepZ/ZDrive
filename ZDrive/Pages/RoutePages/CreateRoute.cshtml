@@ -1,0 +1,19 @@
+﻿@page
+@model ZDrive.Pages.RoutePages.CreateRouteModel
+@{
+}
+
+<h1>New Route</h1>
+
+<form method="post" class="col-4">
+    <div class="form-group">
+        <label asp-for="@Model.Route.UserId">User ID</label>
+        <input asp-for="@Model.Route.UserId" class="form-control" readonly />
+    </div>
+
+    <br />
+    <input class="btn" type="submit" value="Create" />
+</form>
+
+<br />
+<a asp-page="/Index">Go back</a>

@@ -1,0 +1,37 @@
+﻿@page
+@model ZDrive.Pages.RoutePages.UserRoutesModel
+@{
+}
+<h1>Your routes</h1>
+<a asp-page="/RoutePages/CreateRoute" asp-route-uid="@Model.Routes[0].UserId">Create Route</a>
+
+@if (Model.Routes.Count == 0)
+{
+    <p>You have no routes</p>
+}
+    
+else
+{
+
+    <table class="table">
+        @foreach(var route in Model.Routes)
+        {
+            <thead>
+                <tr>
+                    <th>Route: @route.RouteId</th>
+                    <th><a asp-page="/RoutePages/UpdateRoute" asp-route-rid="@route.RouteId">Update</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var stop in route.Stops)
+                {
+                    <tr>
+                        <td>@stop.StopAddress</td>
+                        <td>@stop.StopTimestamp</td>
+                    </tr>
+                }
+            </tbody>
+        }
+    </table>
+
+}

@@ -32,7 +32,7 @@ namespace ZDrive.Services
 
         public Car GetCar(string id)
         {
-            return server.Cars.Where(c => c.UserId.Equals(id)).FirstOrDefault();
+            return server.Cars.Where(c => c.Licenseplate.Equals(id)).FirstOrDefault();
         }
 
         public void UpdateCar(Car c)

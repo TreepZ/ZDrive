@@ -1,0 +1,40 @@
+﻿@page
+@model ZDrive.Pages.UserPages.AllUsersModel
+@{
+}
+<h1>All Users</h1>
+
+<form method="get">
+    Filter by type :
+    <select asp-for="@Model.Filter.UserType">
+        <option value="Driver">Driver</option>
+        <option value="Passenger">Passenger</option>
+    </select>
+    <input type="submit" class="btn btn-outline-primary" value="Filter" />
+    <br />
+    <a href="/UserPages/AllUsers">Back to full list</a>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>@user.UserId</td>
+                <td>@user.UserType</td>
+                <td>@user.UserName</td>
+                @if (user.UserType == "Driver")
+                {
+                    <td><a href="/Index">Cars</a></td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

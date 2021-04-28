@@ -37,7 +37,7 @@ namespace ZDrive.Services
 
         public void UpdateCar(Car c)
         {
-            Car car = server.Cars.Where(ca => ca.UserId == c.UserId).FirstOrDefault();
+            Car car = server.Cars.Where(ca => ca.Licenseplate == c.Licenseplate).FirstOrDefault();
             car.AvailableSeats = c.AvailableSeats;
             car.Licenseplate = c.Licenseplate;
             car.NumberOfSeats = c.NumberOfSeats;

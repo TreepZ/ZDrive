@@ -26,7 +26,7 @@ namespace ZDrive.Pages.UserPages
         }
         public IActionResult OnPost()
         {
-            Car car = carService.GetCar(Car.UserId);
+            Car car = carService.GetCar(Car.Licenseplate);
             car.AvailableSeats -= 1;
             carService.UpdateCar(car);
             return RedirectToPage("ReserveSeat");

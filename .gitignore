@@ -109,6 +109,7 @@ ZDrive/obj/project.assets.json
 ZDrive/ZDrive.csproj
 *.cache
 .vs/*
+.vscode/*
 ZDrive/obj/Debug/netcoreapp3.1/ZDrive.csprojAssemblyReference.cache
 *.cache
 *.json

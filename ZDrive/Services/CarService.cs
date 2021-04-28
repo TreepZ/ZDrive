@@ -37,7 +37,14 @@ namespace ZDrive.Services
 
         public void UpdateCar(Car c)
         {
-            throw new NotImplementedException();
+            Car car = server.Cars.Where(ca => ca.UserId == c.UserId).FirstOrDefault();
+            car.AvailableSeats = c.AvailableSeats;
+            car.Licenseplate = c.Licenseplate;
+            car.NumberOfSeats = c.NumberOfSeats;
+            car.SizeOfCar = c.SizeOfCar;
+            car.User = c.User;
+            car.UserId = c.UserId;
+            server.SaveChanges();
         }
     }
 }

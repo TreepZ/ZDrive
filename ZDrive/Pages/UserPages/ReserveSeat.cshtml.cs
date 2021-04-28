@@ -28,6 +28,7 @@ namespace ZDrive.Pages.UserPages
         {
             Car car = carService.GetCar(Car.UserId);
             car.AvailableSeats -= 1;
+            carService.UpdateCar(car);
             return RedirectToPage("ReserveSeat");
         }
     }

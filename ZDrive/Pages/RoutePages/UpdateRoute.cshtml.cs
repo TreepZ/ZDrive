@@ -27,20 +27,27 @@ namespace ZDrive.Pages.RoutePages
 
         public void OnGet(int rid)
         {
-            Stop.RouteId = rid;
-            Route = Service.AllRoutes().ToList().Find(r => r.RouteId == rid);
-            Route.Stops = StopService.AllStops().Where(s => s.RouteId == rid).ToList();
+            Load(rid);
         }
 
         public IActionResult OnPost()
         {
             if(!ModelState.IsValid)
             {
+                Load((int)Stop.RouteId);
                 return Page();
             }
             StopService.AddStop(Stop);
 
             return Redirect($"/RoutePages/UpdateRoute?rid={Stop.RouteId}");
+        }
+
+        private void Load(int rid)
+        {
+            Stop.RouteId = rid;
+            Route.UserId = Service.AllRoutes().ToList().Find(u => u.RouteId == rid).UserId;
+            Route = Service.AllRoutes().ToList().Find(r => r.RouteId == rid);
+            Route.Stops = StopService.AllStops().Where(s => s.RouteId == rid).ToList();
         }
     }
 }

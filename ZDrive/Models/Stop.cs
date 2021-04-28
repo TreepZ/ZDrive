@@ -18,6 +18,7 @@ namespace ZDrive.Models
         [StringLength(50)]
         public string StopAddress { get; set; }
         [Column(TypeName = "datetime")]
+        [Range(typeof(DateTime), "1/1/2021", "1/1/2099")]
         public DateTime StopTimestamp { get; set; }
         [Column("RouteID")]
         public int? RouteId { get; set; }

@@ -1,0 +1,29 @@
+@page
+@model ZDrive.Pages.StopPages.AllStopsModel
+@{
+}
+<h1>All stops</h1>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Address</th>
+            <th>Time Created</th>
+            <th>Route?</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Stops != null)
+        {
+            @foreach (var s in Model.Stops)
+            {
+                <tr>
+                    <td>@s.StopId</td>
+                    <td>@s.StopAddress</td>
+                    <td>@s.StopTimestamp</td>
+                    <td>@s.RouteId</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

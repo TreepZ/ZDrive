@@ -17,7 +17,7 @@ namespace ZDrive.Models
         public string Licenseplate { get; set; }
         public int NumberOfSeats { get; set; }
         public int AvailableSeats { get; set; }
-        public int SizeOfCar { get; set; }
+        public string SizeOfCar { get; set; }
         [Column("UserID")]
         public int UserId { get; set; }
 

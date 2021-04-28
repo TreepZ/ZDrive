@@ -14,13 +14,13 @@
     </thead>
     <tbody>
         <!-- OwO -->
-        @if (Model.Cars != null)
+        @if (Model.Cars.Count() > 0)
         {
             @foreach (var item in Model.Cars)
             {
                 <tr>
-                    <td> @item.UserId </td>
-                    <td> @item.AvailableSeats / @item.NumberOfSeats</td>
+                    <td>@item.UserId</td>
+                    <td>@item.AvailableSeats / @item.NumberOfSeats</td>
                     <td>
                         @if (item.AvailableSeats >= 1)
                         {

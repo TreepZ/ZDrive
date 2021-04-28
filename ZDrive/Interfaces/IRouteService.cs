@@ -11,7 +11,6 @@ namespace ZDrive.Interfaces
     {
         void AddRoute(Route r);
         void DeleteRoute(Route r);
-        //Emiiil, Ohhhh Emil!
         IEnumerable<Route> AllRoutes();
         void UpdateRoute(Route r);
         Route GetRoute(int id);

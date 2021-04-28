@@ -30,9 +30,9 @@ namespace ZDrive.Services
             throw new NotImplementedException();
         }
 
-        public Car GetCar(int id)
+        public Car GetCar(string id)
         {
-            return server.Cars.Where(c => c.UserId == id).FirstOrDefault();
+            return server.Cars.Where(c => c.UserId.Equals(id)).FirstOrDefault();
         }
 
         public void UpdateCar(Car c)

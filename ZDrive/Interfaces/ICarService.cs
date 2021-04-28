@@ -9,11 +9,10 @@ namespace ZDrive.Interfaces
 {
     public interface ICarService
     {
-        //Hey
         IEnumerable<Car> AllCars();
         void AddCar(Car c);
         void DeleteCar(Car c);
         void UpdateCar(Car c);
-        Car GetCar(int id);
+        Car GetCar(string id);
     }
 }

@@ -3,7 +3,7 @@
 @{
 }
 <h1>Your routes</h1>
-<a asp-page="/RoutePages/CreateRoute" asp-route-uid="@Model.Routes[0].UserId">Create Route</a>
+<a asp-page="/RoutePages/CreateRoute" asp-route-uid="@Model.UserID">Create Route</a>
 
 @if (Model.Routes.Count == 0)
 {
@@ -33,5 +33,7 @@ else
             </tbody>
         }
     </table>
+
+    <a asp-page="/UserPages/AllUsers">Go back</a>
 
 }

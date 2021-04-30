@@ -15,6 +15,7 @@ namespace ZDrive.Pages.RoutePages
         private IRouteService RouteService;
         private IStopsService StopService;
         public List<Route> Routes { get; set; }
+        public int UserID { get; set; }
 
         public UserRoutesModel(IRouteService rService, IStopsService sService)
         {
@@ -25,6 +26,7 @@ namespace ZDrive.Pages.RoutePages
 
         public void OnGet(int uid)
         {
+            UserID = uid;
             Routes = RouteService.AllRoutes().Where(r => r.UserId == uid).ToList();
             foreach(Route route in Routes)
             {

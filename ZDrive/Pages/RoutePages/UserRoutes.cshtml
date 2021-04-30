@@ -16,13 +16,13 @@ else
     <table class="table">
         @foreach(var route in Model.Routes)
         {
-            <thead style="background-color:lightgray">
+            <thead style="background-color:lightgray" onclick="$('#@route.RouteId').toggle()">
                 <tr>
                     <th>Route: @route.RouteId</th>
                     <th><a asp-page="/RoutePages/UpdateRoute" asp-route-rid="@route.RouteId">Update</a></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="display: none;" id="@route.RouteId">
                 @foreach(var stop in route.Stops)
                 {
                     <tr>

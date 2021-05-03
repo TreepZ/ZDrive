@@ -22,7 +22,8 @@ namespace ZDrive.Services
         }
         public void AddCar(Car c)
         {
-            throw new NotImplementedException();
+            server.Cars.Add(c);
+            server.SaveChanges();
         }
 
         public void DeleteCar(Car c)

@@ -12,6 +12,6 @@ namespace ZDrive.Interfaces
         void AddUser(User u);
         IEnumerable<User> AllUsers();
         void DeleteUser(int id);
-        void Update(User u);
+        void UpdateUser(User u);
     }
 }

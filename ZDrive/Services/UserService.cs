@@ -34,9 +34,14 @@ namespace ZDrive.Services
             server.SaveChanges();
         }
 
-        public void Update(User u)
+        public void UpdateUser(User u)
         {
-            throw new NotImplementedException();
+            User @user = server.Users.Where(us => us.UserId == u.UserId).FirstOrDefault();
+            @user.UserName = u.UserName;
+            @user.UserPass = u.UserPass;
+            @user.UserEmail = u.UserEmail;
+            @user.UserType = u.UserType;
+            server.SaveChanges();
         }
     }
 }

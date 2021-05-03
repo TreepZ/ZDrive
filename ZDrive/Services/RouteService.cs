@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using ZDrive.Interfaces;
 using ZDrive.Models;
 
@@ -34,7 +35,7 @@ namespace ZDrive.Services
 
         public Route GetRoute(int id)
         {
-            throw new NotImplementedException();
+            return server.Routes.Include(r => r.User).Where(r => r.RouteId == id).FirstOrDefault();
         }
 
         public void UpdateRoute(Route r)

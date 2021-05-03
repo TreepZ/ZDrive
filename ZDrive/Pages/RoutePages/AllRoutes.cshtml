@@ -6,8 +6,8 @@
 <h1>All Routes</h1>
 
 <form method="get">
-    Filter by address : <input asp-for="@Model.Filter.StopAddress" type="text"/>
-    
+    Filter by address : <input asp-for="@Model.Filter.StopAddress" type="text" />
+
     <input type="submit" class="btn btn-outline-primary" value="Filter" />
     <br />
     <a href="/RoutePages/AllRoutes">Back to full list</a>
@@ -20,6 +20,7 @@
             <tr>
                 <th>Route: @route.RouteId</th>
                 <th><a asp-page="/RoutePages/UpdateRoute" asp-route-rid="@route.RouteId">Update</a></th>
+                <th><a asp-page="/UserPages/ReserveSeat" asp-route-routeId="@route.RouteId">ReserveSeat</a></th>
             </tr>
         </thead>
         <tbody style="display: none;" id="@route.RouteId">
@@ -33,5 +34,3 @@
         </tbody>
     }
 </table>
-
-<a asp-page="/Index">Go Back</a>

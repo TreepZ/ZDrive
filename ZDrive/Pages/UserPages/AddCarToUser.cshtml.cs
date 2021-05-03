@@ -9,28 +9,28 @@ using ZDrive.Models;
 
 namespace ZDrive.Pages.UserPages
 {
-    public class ReserveSeatModel : PageModel
+    public class AddCarToUserModel : PageModel
     {
         private ICarService carService;
         [BindProperty]
         public IEnumerable<Car> Cars { get; set; }
         [BindProperty]
         public Car Car { get; set; }
-        public ReserveSeatModel(ICarService service)
+        public AddCarToUserModel(ICarService service)
         {
             carService = service;
         }
         public IActionResult OnGet()
         {
-            Cars = carService.AllCars().Where(c => c.AvailableSeats >= 0);
+            Cars = carService.AllCars();
             return Page();
         }
         public IActionResult OnPost()
         {
             Car car = carService.GetCar(Car.Licenseplate);
-            car.AvailableSeats -= 1;
+            car.UserId = 2;
             carService.UpdateCar(car);
-            return RedirectToPage("ReserveSeat");
+            return RedirectToPage("AddCarToUser");
         }
     }
 }

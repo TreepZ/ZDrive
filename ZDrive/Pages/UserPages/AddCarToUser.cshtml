@@ -1,14 +1,14 @@
 ﻿@page
-@model ZDrive.Pages.UserPages.ReserveSeatModel
+@model ZDrive.Pages.UserPages.AddCarToUserModel
 @{
 }
-<h1>List of cars with available seats</h1>
+<h1>List of available cars</h1>
 
 <table class="table">
     <thead>
         <tr>
             <th>License Plate</th>
-            <th>Available seats</th>
+            <th>Current User</th>
             <th> </th>
         </tr>
     </thead>
@@ -20,15 +20,12 @@
             {
                 <tr>
                     <td>@item.Licenseplate</td>
-                    <td>@item.AvailableSeats / @item.NumberOfSeats</td>
+                    <td>@item.UserId</td>
                     <td>
-                        @if (item.AvailableSeats >= 1)
-                        {
                             <form method="post">
                                 <input type="hidden" asp-for="@Model.Car.Licenseplate" readonly value="@item.Licenseplate" class="form-control" />
-                                <button type="submit" class="btn-primary">Reserve Seat</button>
+                                <button type="submit" class="btn-primary">Add car to my profile</button>
                             </form>
-                        }
                     </td>
                 </tr>
             }

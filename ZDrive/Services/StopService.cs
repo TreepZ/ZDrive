@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using ZDrive.Interfaces;
 using ZDrive.Models;
 
@@ -31,9 +32,14 @@ namespace ZDrive.Services
             throw new NotImplementedException();
         }
 
-        public Stop GetStop(int id)
+        public Stop GetStop(int stopId)
         {
-            throw new NotImplementedException();
+            return server.Stops
+                .Include(s => s.Route)
+                .ThenInclude(r => r.User)
+                .Where(s => s.StopId == stopId).FirstOrDefault();
+                //.ThenInclude(u => u.Cars.Where(c => c.UserId == u.UserId))
+            //throw new NotImplementedException();
         }
 
         public void UpdateStop(Stop s)

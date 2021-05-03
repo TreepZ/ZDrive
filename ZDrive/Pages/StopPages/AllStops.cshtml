@@ -8,8 +8,9 @@
         <tr>
             <th>ID</th>
             <th>Address</th>
-            <th>Time Created</th>
+            <th>Estimated Arrival</th>
             <th>Route?</th>
+            <th>Info</th>
         </tr>
     </thead>
     <tbody>
@@ -22,6 +23,7 @@
                     <td>@s.StopAddress</td>
                     <td>@s.StopTimestamp</td>
                     <td>@s.RouteId</td>
+                    <td><a asp-page="./StopInfo" asp-route-stopID="@s.StopId" asp-route-routeID="@s.RouteId">See info</a></td>
                 </tr>
             }
         }

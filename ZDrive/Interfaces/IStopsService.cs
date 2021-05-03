@@ -13,6 +13,6 @@ namespace ZDrive.Interfaces
         IEnumerable<Stop> AllStops();
         void DeleteStop(Stop s);
         void UpdateStop(Stop s);
-        Stop GetStop(int id);
+        Stop GetStop(int stopId);
     }
 }

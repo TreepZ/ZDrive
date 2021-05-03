@@ -1,0 +1,37 @@
+﻿@page
+@model ZDrive.Pages.RoutePages.AllRoutesModel
+@{
+}
+
+<h1>All Routes</h1>
+
+<form method="get">
+    Filter by address : <input asp-for="@Model.Filter.StopAddress" type="text"/>
+    
+    <input type="submit" class="btn btn-outline-primary" value="Filter" />
+    <br />
+    <a href="/RoutePages/AllRoutes">Back to full list</a>
+</form>
+
+<table class="table">
+    @foreach (var route in Model.Routes)
+    {
+        <thead style="background-color:lightgray" onclick="$('#@route.RouteId').toggle()">
+            <tr>
+                <th>Route: @route.RouteId</th>
+                <th><a asp-page="/RoutePages/UpdateRoute" asp-route-rid="@route.RouteId">Update</a></th>
+            </tr>
+        </thead>
+        <tbody style="display: none;" id="@route.RouteId">
+            @foreach (var stop in route.Stops)
+            {
+                <tr id="@stop.StopId">
+                    <td>@stop.StopAddress</td>
+                    <td>@stop.StopTimestamp</td>
+                </tr>
+            }
+        </tbody>
+    }
+</table>
+
+<a asp-page="/Index">Go Back</a>

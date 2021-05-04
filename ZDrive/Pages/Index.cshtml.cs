@@ -17,9 +17,9 @@ namespace ZDrive.Pages
             _logger = logger;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-
+            return RedirectToPage("RoutePages/AllRoutes");
         }
     }
 }

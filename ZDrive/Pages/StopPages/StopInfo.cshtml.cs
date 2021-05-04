@@ -17,7 +17,7 @@ namespace ZDrive.Pages.StopPages
             stopService = _stopService;
         }
         public Stop Stop { get; private set; }
-        public IActionResult OnGet(int stopID, int routeID)
+        public IActionResult OnGet(int stopID)
         {
             Stop = stopService.GetStop(stopID);
             return Page();

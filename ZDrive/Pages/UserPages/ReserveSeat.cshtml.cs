@@ -12,15 +12,17 @@ namespace ZDrive.Pages.UserPages
     public class ReserveSeatModel : PageModel
     {
         private ICarService carService;
+        private IRouteService routeService;
         [BindProperty]
         public IEnumerable<Car> Cars { get; set; }
         [BindProperty]
         public Car Car { get; set; }
-        public ReserveSeatModel(ICarService service)
+        public ReserveSeatModel(ICarService service, IRouteService rService)
         {
             carService = service;
+            routeService = rService;
         }
-        public IActionResult OnGet()
+        public IActionResult OnGet(int routeId)
         {
             Cars = carService.AllCars().Where(c => c.AvailableSeats >= 0);
             return Page();

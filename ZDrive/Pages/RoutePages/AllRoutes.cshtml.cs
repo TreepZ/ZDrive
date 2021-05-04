@@ -28,7 +28,7 @@ namespace ZDrive.Pages.RoutePages
         {
             if (Filter.StopAddress != null)
             {
-                List<Stop> stops = StopService.AllStops().ToList().FindAll(s => s.StopAddress.StartsWith(Filter.StopAddress));
+                List<Stop> stops = StopService.AllStops().Where(s => s.StopAddress.ToLower().Contains(Filter.StopAddress.ToLower())).ToList();
 
                 foreach(var stop in stops)
                 {

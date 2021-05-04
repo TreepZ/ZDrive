@@ -10,7 +10,7 @@ namespace ZDrive.Models
     {
         public ZdriveContext()
         {
-            //Lol this is a tes - Love Oliver <3
+
         }
 
         public ZdriveContext(DbContextOptions<ZdriveContext> options)
@@ -78,6 +78,8 @@ namespace ZDrive.Models
                 entity.Property(e => e.UserPass).IsUnicode(false);
 
                 entity.Property(e => e.UserType).IsUnicode(false);
+
+                
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -33,7 +33,7 @@
                 @Html.DisplayFor(model => model.User.UserType)
             </dd>
         </dl>
-        <input type="submit" value="Delete" class="btn btn-danger" />
+        <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure?')"/>
     </form>
     <div>
         <a asp-page="/UserPages/AllUsers">Back to List</a>

@@ -27,10 +27,25 @@ namespace ZDrive.Services
             {
                 throw new ArgumentException("Password doesn't meet requirements");
             }
+            if (!isEmailValid(u.UserEmail))
+            {
+                throw new ArgumentException("Email Invalid");
+            }
             else
             {
                 server.Users.Add(u);
                 server.SaveChanges();
+            }
+        }
+        public static bool isEmailValid(String UserEmail)
+        {
+            if (!UserEmail.Contains(".edu.easj"))
+            {
+                throw new ArgumentException("Email must contain .edu.easj");
+            }
+            else
+            {
+                return true;
             }
         }
         public static bool isPassValid(String UserPass)

@@ -27,11 +27,12 @@ namespace ZDrive.Models
         [StringLength(50)]
         public string UserName { get; set; }
         [Required]
-        [StringLength(100, MinimumLength =6)]
+        [StringLength(20, MinimumLength = 6)]
         [MaxLength]
         public string UserPass { get; set; }
         [Required]
         [StringLength(50)]
+        [EmailAddress]
         public string UserEmail { get; set; }
 
         [InverseProperty(nameof(Car.User))]

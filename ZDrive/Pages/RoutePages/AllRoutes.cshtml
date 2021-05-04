@@ -3,34 +3,60 @@
 @{
 }
 
-<h1>All Routes</h1>
-
-<form method="get">
-    Filter by address : <input asp-for="@Model.Filter.StopAddress" type="text" />
-
+<!-- centers page title -->
+<div class="text-center">
+    <h1>All Routes</h1>
+</div>
+<!-- Add new route link button -->
+@* <a href="./CreateRoute" class="btn btn-primary m-3">Add Route</a> *@
+<button class="btn btn-primary m-3" onclick="$('#filterform').toggle()">Filter options</button>
+<form id="filterform" style="display: none; width:10em;" class="m-3" method="get">
+    <label>Filter by address</label>
+    <input class="form-control" asp-for="@Model.Filter.StopAddress" type="text" />
     <input type="submit" class="btn btn-outline-primary" value="Filter" />
     <br />
     <a href="/RoutePages/AllRoutes">Back to full list</a>
 </form>
 
-<table class="table">
+@* <table class="table">
     @foreach (var route in Model.Routes)
     {
-        <thead style="background-color:lightgray" onclick="$('#@route.RouteId').toggle()">
-            <tr>
-                <th>Route: @route.RouteId</th>
-                <th><a asp-page="/RoutePages/UpdateRoute" asp-route-rid="@route.RouteId">Update</a></th>
-                <th><a asp-page="/UserPages/ReserveSeat" asp-route-routeId="@route.RouteId">ReserveSeat</a></th>
-            </tr>
-        </thead>
-        <tbody style="display: none;" id="@route.RouteId">
-            @foreach (var stop in route.Stops)
-            {
-                <tr>
-                    <td>@stop.StopAddress</td>
-                    <td>@stop.StopTimestamp</td>
-                </tr>
-            }
-        </tbody>
+    <thead style="background-color:lightgray" onclick="$('#@route.RouteId').toggle()">
+    <tr>
+    <th>Route: @route.RouteId</th>
+    <th><a asp-page="/RoutePages/UpdateRoute" asp-route-rid="@route.RouteId">Update</a></th>
+    <th><a asp-page="/UserPages/ReserveSeat" asp-route-routeId="@route.RouteId">ReserveSeat</a></th>
+    </tr>
+    </thead>
+    <tbody style="display: none;" id="@route.RouteId">
+    @foreach (var stop in route.Stops)
+    {
+    <tr>
+    <td>@stop.StopAddress</td>
+    <td>@stop.StopTimestamp</td>
+    </tr>
     }
-</table>
+    </tbody>
+    }
+    </table> *@
+
+<!-- Custom html -->
+@foreach (var route in Model.Routes)
+{
+    <div class="shadow card m-3">
+        <div class="card-body p-3">
+            <h5 class="card-text">Route ID @route.RouteId</h5>
+            @if (@route.Stops.Count() != 0)
+            {
+                <h5 class="card-text">Endstop @route.Stops.Last().StopAddress</h5>
+                <h5 class="card-text">Estimated Arrival @route.Stops.Last().StopTimestamp.ToString("mm:hh dd/MM-yy")</h5>
+            }
+            <div class="d-flex justify-content-around mt-4 mb-2">
+                <a class="btn btn-primary col-5" asp-page="/RoutePages/UpdateRoute" asp-route-rid="@route.RouteId">See
+                    stops</a>
+                <a class="btn btn-primary col-5" asp-page="/UserPages/ReserveSeat"
+                asp-route-routeId="@route.RouteId">ReserveSeat</a>
+            </div>
+        </div>
+    </div>
+}

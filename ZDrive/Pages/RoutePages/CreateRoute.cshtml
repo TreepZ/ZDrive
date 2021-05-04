@@ -2,17 +2,26 @@
 @model ZDrive.Pages.RoutePages.CreateRouteModel
 @{
 }
-<h1>New Route</h1>
 
-<form method="post" class="col-4">
+<!-- centers page title -->
+<div class="text-center">
+    <h1>New Route</h1>
+</div>
+@* <form method="post" class="col-4">
     <div class="form-group">
-        <label asp-for="@Model.Route.UserId">User ID</label>
-        <input asp-for="@Model.Route.UserId" class="form-control" readonly />
+    <label asp-for="@Model.Route.UserId">User ID</label>
+    <input asp-for="@Model.Route.UserId" class="form-control" readonly />
     </div>
 
     <br />
-    <input class="btn" type="submit" value="Create" />
+    </form> *@
+<form method="post" class="shadow card m-3">
+    <div class="card-body p-3">
+        <label class="card-text col-5" asp-for="@Model.Route.UserId">User ID</label>
+        <input asp-for="@Model.Route.UserId" class="form-control" readonly />
+        <div class="d-flex justify-content-around mt-4 mb-2">
+            <input class="btn btn-primary col-5" type="submit" value="Create" />
+            <a class="btn btn-primary col-5" asp-page="/Index">Go back</a>
+        </div>
+    </div>
 </form>
-
-<br />
-<a asp-page="/Index">Go back</a>

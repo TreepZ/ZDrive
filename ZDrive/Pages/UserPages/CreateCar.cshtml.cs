@@ -31,6 +31,7 @@ namespace ZDrive.Pages.UserPages
             {
                 return Page();
             }
+            Car.AvailableSeats = Car.NumberOfSeats;
             service.AddCar(Car);
             return RedirectToPage("/UserPages/AddCarToUser");
         }

@@ -13,12 +13,20 @@ namespace ZDrive.Models
     public partial class Car
     {
         [Key]
-        [StringLength(50)]
+        [StringLength(7, MinimumLength = 7)]
+        [Display(Name = "License plate")]
+        [Required]
         public string Licenseplate { get; set; }
+        [Display(Name = "Number of passenger seats")]
+        [Range(1, 5)]
+        [Required]
         public int NumberOfSeats { get; set; }
         public int AvailableSeats { get; set; }
+        [Display(Name = "Size of car")]
+        [Required]
         public string SizeOfCar { get; set; }
         [Column("UserID")]
+        [Required]
         public int UserId { get; set; }
 
         [ForeignKey(nameof(UserId))]

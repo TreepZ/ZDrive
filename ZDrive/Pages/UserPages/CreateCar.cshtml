@@ -16,15 +16,21 @@
                 <input asp-for="Car.NumberOfSeats" class="form-control" />
                 <span asp-validation-for="Car.NumberOfSeats" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="Car.AvailableSeats" class="control-label"></label>
                 <input asp-for="Car.AvailableSeats" class="form-control" />
                 <span asp-validation-for="Car.AvailableSeats" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <label asp-for="Car.SizeOfCar" class="control-label"></label>
-                <input asp-for="Car.SizeOfCar" class="form-control" />
-                <span asp-validation-for="Car.SizeOfCar" class="text-danger"></span>
+                <select asp-for="Car.SizeOfCar" class="form-control">
+                    <option value="Demi">Demi</option>
+                    <option value="Short">Short</option>
+                    <option value="Tall">Tall</option>
+                    <option value="Grande">Grande</option>
+                    <option value="Venti">Venti</option>
+                    <option value="Trenta">Trenta</option>
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="Car.UserId" class="control-label"></label>

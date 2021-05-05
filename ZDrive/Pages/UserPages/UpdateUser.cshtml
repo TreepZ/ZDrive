@@ -3,39 +3,73 @@
 @{
     ViewData["Title"] = "UpdateUser";
 }
-<h1>EditEvent</h1>
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="User.UserId" />
-            <div class="form-group">
-                <select asp-for="User.UserType" class="form-control">
-                    <option value="Driver">Driver</option>
-                    <option value="Passenger">Passenger</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label asp-for="User.UserName" class="control-label"></label>
-                <input asp-for="User.UserName" class="form-control" />
-                <span asp-validation-for="User.UserName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="User.UserPass" class="control-label"></label>
-                <input type="password" asp-for="User.UserPass" class="form-control" />
-                <span asp-validation-for="User.UserPass" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="User.UserEmail" class="control-label"></label>
-                <input asp-for="User.UserEmail" class="form-control" />
-                <span asp-validation-for="User.UserEmail" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" onclick="return confirm('Are you sure?')" />
-            </div>
-        </form>
+<div class="text-center">
+    <h1>Update User</h1>
+</div>
+<form method="post" class="shadow card m-3">
+    <div class="card-body p-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="User.UserId" />
+        <div class="form-group">
+            <select asp-for="User.UserType" class="form-control">
+                <option value="Driver">Driver</option>
+                <option value="Passenger">Passenger</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="User.UserName" class="control-label"></label>
+            <input asp-for="User.UserName" class="form-control" />
+            <span asp-validation-for="User.UserName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="User.UserPass" class="control-label"></label>
+            <input type="password" asp-for="User.UserPass" class="form-control" />
+            <span asp-validation-for="User.UserPass" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="User.UserEmail" class="control-label"></label>
+            <input asp-for="User.UserEmail" class="form-control" />
+            <span asp-validation-for="User.UserEmail" class="text-danger"></span>
+        </div>
+        <div class="d-flex justify-content-around mt-4 mb-2">
+            <input class="btn btn-primary col-5" type="submit" value="Update" />
+            <a class="btn btn-primary col-5" asp-page="/Index">Go back</a>
+        </div>
     </div>
-</div>
-<div>
+</form>
+@* <div class="row">
+    <div class="col-md-4">
+    <form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="User.UserId" />
+    <div class="form-group">
+    <select asp-for="User.UserType" class="form-control">
+    <option value="Driver">Driver</option>
+    <option value="Passenger">Passenger</option>
+    </select>
+    </div>
+    <div class="form-group">
+    <label asp-for="User.UserName" class="control-label"></label>
+    <input asp-for="User.UserName" class="form-control" />
+    <span asp-validation-for="User.UserName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="User.UserPass" class="control-label"></label>
+    <input type="password" asp-for="User.UserPass" class="form-control" />
+    <span asp-validation-for="User.UserPass" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="User.UserEmail" class="control-label"></label>
+    <input asp-for="User.UserEmail" class="form-control" />
+    <span asp-validation-for="User.UserEmail" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <input type="submit" value="Save" class="btn btn-primary" onclick="return confirm('Are you sure?')" />
+    </div>
+    </form>
+    </div>
+    </div>
+    <div>
     <a asp-page="/UserPages/AllUsers">Back to List</a>
-</div>
+    </div> *@

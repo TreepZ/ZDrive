@@ -24,13 +24,19 @@ namespace ZDrive.Pages.UserPages
 
         public void OnGet()
         {
-            if(Filter.UserType != null)
+            if (Filter.UserType != null)
             {
                 Users = Service.AllUsers().Where(u => u.UserType == Filter.UserType).ToList();
             }
             else
                 Users = Service.AllUsers().ToList();
-                        
+
+        }
+        public IActionResult OnPostDelete(int userID)
+        {
+            Service.DeleteUser(userID);
+
+            return RedirectToPage("/UserPages/AllUsers");
         }
     }
 }

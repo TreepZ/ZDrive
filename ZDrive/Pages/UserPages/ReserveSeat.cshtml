@@ -2,35 +2,55 @@
 @model ZDrive.Pages.UserPages.ReserveSeatModel
 @{
 }
-<h1>List of cars with available seats</h1>
-
-<table class="table">
+<div class="text-center">
+    <h1>List of cars with available seats</h1>
+</div>
+@foreach (var car in Model.Cars)
+{
+    <div class="shadow card m-3">
+        <div class="card-body p-3">
+            <h5 class="card-text">License Plate @car.Licenseplate</h5>
+            <h5 class="card-text">Available seats @car.AvailableSeats / @car.NumberOfSeats</h5>
+            <div class="d-flex justify-content-start mt-4 mb-2">
+                @if (car.AvailableSeats >= 1)
+                {
+                    <form method="post" class="col-12">
+                        <input type="hidden" asp-for="@Model.Car.Licenseplate" readonly value="@car.Licenseplate" />
+                        <button type="submit" class="btn btn-primary col-5">Reserve Seat</button>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+}
+@* <table class="table">
     <thead>
-        <tr>
-            <th>License Plate</th>
-            <th>Available seats</th>
-            <th> </th>
-        </tr>
+    <tr>
+    <th>License Plate</th>
+    <th>Available seats</th>
+    <th> </th>
+    </tr>
     </thead>
     <tbody>
-        <!-- OwO -->
-        @if (Model.Cars.Count() > 0)
-        {
-            @foreach (var item in Model.Cars)
-            {
-                <tr>
-                    <td>@item.Licenseplate</td>
-                    <td>@item.AvailableSeats / @item.NumberOfSeats</td>
-                    <td>
-                        @if (item.AvailableSeats >= 1)
-                        {
-                            <form method="post">
-                                <input type="hidden" asp-for="@Model.Car.Licenseplate" readonly value="@item.Licenseplate" class="form-control" />
-                                <button type="submit" class="btn-primary">Reserve Seat</button>
-                            </form>
-                        }
-                    </td>
-                </tr>
-            }
-        }
-</table>
+    <!-- OwO -->
+    @if (Model.Cars.Count() > 0)
+    {
+    @foreach (var item in Model.Cars)
+    {
+    <tr>
+    <td>@item.Licenseplate</td>
+    <td>@item.AvailableSeats / @item.NumberOfSeats</td>
+    <td>
+    @if (item.AvailableSeats >= 1)
+    {
+    <form method="post">
+    <input type="hidden" asp-for="@Model.Car.Licenseplate" readonly value="@item.Licenseplate"
+    class="form-control" />
+    <button type="submit" class="btn-primary">Reserve Seat</button>
+    </form>
+    }
+    </td>
+    </tr>
+    }
+    }
+    </table> *@

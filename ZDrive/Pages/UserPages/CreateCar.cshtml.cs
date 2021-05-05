@@ -20,8 +20,10 @@ namespace ZDrive.Pages.UserPages
         {
             this.service = service;
         }
-        public IActionResult OnGet()
+        public IActionResult OnGet(int userID)
         {
+            Car = new Car();
+            Car.UserId = userID;
             return Page();
         }
         public IActionResult OnPost()

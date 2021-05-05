@@ -39,9 +39,9 @@ namespace ZDrive.Services
         }
         public static bool isEmailValid(String UserEmail)
         {
-            if (!UserEmail.Contains(".edu.easj"))
+            if (!UserEmail.Contains("edu.easj"))
             {
-                throw new ArgumentException("Email must contain .edu.easj");
+                throw new ArgumentException("Email must contain edu.easj");
             }
             else
             {
@@ -151,12 +151,22 @@ namespace ZDrive.Services
 
         public void UpdateUser(User u)
         {
+            if (!isPassValid(u.UserPass))
+            {
+                throw new ArgumentException("Password doesn't meet requirements");
+            }
+            if (!isEmailValid(u.UserEmail))
+            {
+                throw new ArgumentException("Email Invalid");
+            }
+            else { 
             User @user = server.Users.Where(us => us.UserId == u.UserId).FirstOrDefault();
             @user.UserName = u.UserName;
             @user.UserPass = u.UserPass;
             @user.UserEmail = u.UserEmail;
             @user.UserType = u.UserType;
             server.SaveChanges();
+            }
         }
 
     }

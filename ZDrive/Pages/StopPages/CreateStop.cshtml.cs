@@ -18,8 +18,13 @@ namespace ZDrive.Pages.StopPages
         }
         [BindProperty]
         public Stop AddStop { get; set; }
-        public IActionResult OnGet()
+        public IActionResult OnGet(int? routeId)
         {
+            AddStop = new Stop();
+            if (routeId != null)
+            {
+                AddStop.RouteId = routeId;
+            }
             return Page();
         }
         public IActionResult OnPost()
@@ -28,9 +33,13 @@ namespace ZDrive.Pages.StopPages
             {
                 return Page();
             }
-            AddStop.StopTimestamp = DateTime.Now;
+            //AddStop.StopTimestamp = DateTime.Now;
             stopService.AddStop(AddStop);
-            return RedirectToPage("../Index");
+            if (AddStop.RouteId == null)
+            {
+                return RedirectToPage("../Index");
+            }
+            return RedirectToPage("../RoutePages/UpdateRoute", new { rid = AddStop.RouteId });
         }
     }
 }

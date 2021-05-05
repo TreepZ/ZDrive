@@ -21,25 +21,26 @@
             </div> *@
     </div>
 </div>
-<button class="btn btn-primary m-3" onclick="$('#addstop').toggle()">Add Stop</button>
-<form id="addstop" style="display: none;" method="post" class="col-6">
+<a asp-page="../StopPages/CreateStop" asp-route-routeId="@Model.Route.RouteId" class="btn btn-primary m-3">Add Stop</a>
+@* <button class="btn btn-primary m-3" onclick="$('#addstop').toggle()">Add Stop</button> *@
+@* <form id="addstop" style="display: none;" method="post" class="col-6">
     <div class="form-group">
-        <label asp-for="@Model.Stop.RouteId" class="control-label">Route ID</label>
-        <input asp-for="@Model.Stop.RouteId" value="@Model.Stop.RouteId" readonly type="text" class="form-control">
+    <label asp-for="@Model.Stop.RouteId" class="control-label">Route ID</label>
+    <input asp-for="@Model.Stop.RouteId" value="@Model.Stop.RouteId" readonly type="text" class="form-control">
     </div>
     <div class="form-group">
-        <label asp-for="@Model.Stop.StopAddress" class="control-label">Stop Address</label>
-        <input asp-for="@Model.Stop.StopAddress" type="text" class="form-control">
-        <span asp-validation-for="@Model.Stop.StopAddress" class="text-danger"></span>
+    <label asp-for="@Model.Stop.StopAddress" class="control-label">Stop Address</label>
+    <input asp-for="@Model.Stop.StopAddress" type="text" class="form-control">
+    <span asp-validation-for="@Model.Stop.StopAddress" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="@Model.Stop.StopTimestamp" class="control-label">Estimated arrival on stop</label>
-        <input asp-for="@Model.Stop.StopTimestamp" type="datetime-local" class="form-control">
-        <span asp-validation-for="@Model.Stop.StopTimestamp" class="text-danger"></span>
+    <label asp-for="@Model.Stop.StopTimestamp" class="control-label">Estimated arrival on stop</label>
+    <input asp-for="@Model.Stop.StopTimestamp" type="datetime-local" class="form-control">
+    <span asp-validation-for="@Model.Stop.StopTimestamp" class="text-danger"></span>
     </div>
 
     <input class="btn btn-primary" type="submit" value="Add Stop" />
-</form>
+    </form> *@
 @foreach (var stop in Model.Route.Stops)
 {
     <div class="shadow card m-3">

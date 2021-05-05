@@ -15,15 +15,22 @@ namespace ZDrive.Services
         {
             server = context;
         }
-        
+
         public IEnumerable<Car> AllCars()
         {
             return server.Cars;
         }
         public void AddCar(Car c)
         {
-            server.Cars.Add(c);
-            server.SaveChanges();
+            try
+            {
+                server.Cars.Add(c);
+                server.SaveChanges();
+            }
+            catch (System.Exception)
+            {
+                throw new Exception("Car with same license plate is already registered");
+            }
         }
 
         public void DeleteCar(Car c)

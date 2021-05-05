@@ -33,8 +33,17 @@ namespace ZDrive.Pages.UserPages
             {
                 return Page();
             }
+
             Car.AvailableSeats = Car.NumberOfSeats;
-            service.AddCar(Car);
+            try
+            {
+                service.AddCar(Car);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return Page();
+            }
             return RedirectToPage("/UserPages/AddCarToUser");
         }
     }

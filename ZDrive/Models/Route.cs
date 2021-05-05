@@ -27,5 +27,8 @@ namespace ZDrive.Models
         public virtual User User { get; set; }
         [InverseProperty(nameof(Stop.Route))]
         public virtual ICollection<Stop> Stops { get; set; }
+        [Required]
+        public string CarID { get; set; }
+        public virtual Car Car { get; set; }
     }
 }

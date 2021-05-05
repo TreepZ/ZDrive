@@ -40,7 +40,10 @@ namespace ZDrive.Services
 
         public void UpdateRoute(Route r)
         {
-            throw new NotImplementedException();
+            Route route = AllRoutes().ToList().Find(route => route.RouteId == r.RouteId);
+            route.CarID = r.CarID;
+            route.UserId = r.UserId;
+            server.SaveChanges();
         }
     }
 }

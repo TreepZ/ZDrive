@@ -13,14 +13,16 @@ namespace ZDrive.Pages.RoutePages
     {
         private IRouteService RouteService;
         private IStopsService StopService;
+        private ICarService CarService;
         public List<Route> Routes { get; set; }
         [BindProperty(SupportsGet = true)]
         public Stop Filter { get; set; }
 
-        public AllRoutesModel(IRouteService rService, IStopsService sService)
+        public AllRoutesModel(IRouteService rService, IStopsService sService,ICarService cService)
         {
             RouteService = rService;
             StopService = sService;
+            CarService = cService;
             Routes = new List<Route>();
         }
 
@@ -47,7 +49,19 @@ namespace ZDrive.Pages.RoutePages
             foreach (Route route in Routes)
             {
                 route.Stops = StopService.AllStops().Where(s => route.RouteId == s.RouteId).ToList();
+                route.Car = CarService.AllCars().Where(car => car.Licenseplate == route.CarID).FirstOrDefault();
             }
+        }
+
+        public IActionResult OnPost(int rid)
+        {
+            Route route = RouteService.GetRoute(rid);
+            route.Car = CarService.AllCars().ToList().Find(c => c.Licenseplate == route.CarID);
+            route.Car.AvailableSeats--;
+            CarService.UpdateCar(route.Car);
+
+            OnGet();
+            return Page();
         }
 
     }

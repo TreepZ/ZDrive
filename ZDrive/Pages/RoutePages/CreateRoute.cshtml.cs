@@ -11,19 +11,24 @@ namespace ZDrive.Pages.RoutePages
 {
     public class CreateRouteModel : PageModel
     {
-        private IRouteService Service;
+        private IRouteService RouteService;
+        private ICarService CarService;
         [BindProperty]
         public Route Route { get; set; }
+        public List<Car> Cars { get; set; }
 
-        public CreateRouteModel(IRouteService service, IStopsService stopService)
+        public CreateRouteModel(IRouteService rService, ICarService cService)
         {
-            Service = service;
+            RouteService = rService;
+            CarService = cService;
             Route = new Route();
+            Cars = new List<Car>();
         }
 
         public void OnGet(int uid)
         {
             Route.UserId = uid;
+            Cars = CarService.AllCars().Where(car => car.UserId == uid).ToList();
         }
 
         public IActionResult OnPost()
@@ -33,7 +38,7 @@ namespace ZDrive.Pages.RoutePages
                 return Page();
             }
 
-            Service.AddRoute(Route);
+            RouteService.AddRoute(Route);
             return Redirect($"/RoutePages/UserRoutes?uid={Route.UserId}");
         }
 

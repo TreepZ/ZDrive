@@ -30,9 +30,10 @@
             </div>
             <div class="d-flex justify-content-around mt-4 mb-2">
                 <a class="btn btn-primary col-5" asp-page="UpdateUser" asp-route-id="@user.UserId">Update</a>
-                <form method="post" asp-page-handler="delete" class="col-5 p-0">
-                    <input class="btn btn-primary" style="min-width: 100%;" asp-route-userID="@user.UserId" type="submit"
-                    value="Delete" onclick="return confirm('Are you sure?')">
+                <form method="post" asp-page-handler="Delete" class="col-5 p-0">
+                    <input type="hidden" asp-for="@Model.Filter.UserId" value="@user.UserId">
+                    <input class="btn btn-primary" style="min-width: 100%;" type="submit" value="Delete"
+                    onclick="return confirm('Are you sure?')">
                 </form>
                 @* <a class="btn btn-primary col-5" asp-page="DeleteUser" asp-route-id="@user.UserId">Delete</a> *@
             </div>

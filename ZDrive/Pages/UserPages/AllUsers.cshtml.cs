@@ -15,7 +15,6 @@ namespace ZDrive.Pages.UserPages
         public List<User> Users { get; set; }
         [BindProperty(SupportsGet = true)]
         public User Filter { get; set; }
-
         public AllUsersModel(IUserService service)
         {
             Service = service;
@@ -32,9 +31,9 @@ namespace ZDrive.Pages.UserPages
                 Users = Service.AllUsers().ToList();
 
         }
-        public IActionResult OnPostDelete(int userID)
+        public IActionResult OnPostDelete()
         {
-            Service.DeleteUser(userID);
+            Service.DeleteUser(Filter.UserId);
 
             return RedirectToPage("/UserPages/AllUsers");
         }

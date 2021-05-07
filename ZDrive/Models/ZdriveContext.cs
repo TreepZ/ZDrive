@@ -59,6 +59,7 @@ namespace ZDrive.Models
                     .HasConstraintName("FK__Routes__UserID__2F10007B");
             });
 
+
             modelBuilder.Entity<Stop>(entity =>
             {
                 entity.Property(e => e.StopAddress).IsUnicode(false);
@@ -79,7 +80,7 @@ namespace ZDrive.Models
 
                 entity.Property(e => e.UserType).IsUnicode(false);
 
-                
+
             });
 
             OnModelCreatingPartial(modelBuilder);

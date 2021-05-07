@@ -25,12 +25,12 @@ namespace ZDrive.Services
             try
             {
                 server.Cars.Add(c);
-                server.SaveChanges();
             }
             catch (System.Exception)
             {
                 throw new Exception("Car with same license plate is already registered");
             }
+            server.SaveChanges();
         }
 
         public void DeleteCar(Car c)

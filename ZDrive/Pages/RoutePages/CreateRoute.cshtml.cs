@@ -33,7 +33,7 @@ namespace ZDrive.Pages.RoutePages
 
         public IActionResult OnPost()
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return Page();
             }

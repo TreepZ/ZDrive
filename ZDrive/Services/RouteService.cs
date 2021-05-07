@@ -35,7 +35,7 @@ namespace ZDrive.Services
 
         public Route GetRoute(int id)
         {
-            return server.Routes.Include(r => r.User).Where(r => r.RouteId == id).FirstOrDefault();
+            return server.Routes.Include(r => r.User).Include(r => r.Car).Where(r => r.RouteId == id).FirstOrDefault();
         }
 
         public void UpdateRoute(Route r)

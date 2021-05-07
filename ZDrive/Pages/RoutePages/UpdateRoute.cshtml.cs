@@ -32,7 +32,7 @@ namespace ZDrive.Pages.RoutePages
 
         public IActionResult OnPost()
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 Load((int)Stop.RouteId);
                 return Page();
@@ -45,8 +45,9 @@ namespace ZDrive.Pages.RoutePages
         private void Load(int rid)
         {
             Stop.RouteId = rid;
-            Route.UserId = Service.AllRoutes().ToList().Find(u => u.RouteId == rid).UserId;
-            Route = Service.AllRoutes().ToList().Find(r => r.RouteId == rid);
+            /* Route.UserId = Service.AllRoutes().ToList().Find(u => u.RouteId == rid).UserId;
+            Route = Service.AllRoutes().ToList().Find(r => r.RouteId == rid); */
+            Route = Service.GetRoute(rid);
             Route.Stops = StopService.AllStops().Where(s => s.RouteId == rid).ToList();
         }
     }

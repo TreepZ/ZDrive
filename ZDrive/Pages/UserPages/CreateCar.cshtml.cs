@@ -44,7 +44,7 @@ namespace ZDrive.Pages.UserPages
                 ModelState.AddModelError(string.Empty, ex.Message);
                 return Page();
             }
-            return RedirectToPage("/UserPages/AddCarToUser");
+            return RedirectToPage("/UserPages/UserCars", new { uid = Car.UserId });
         }
     }
 }

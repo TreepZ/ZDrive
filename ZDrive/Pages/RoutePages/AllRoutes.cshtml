@@ -49,8 +49,8 @@
 
             @if (@route.Stops.Count() != 0)
             {
-                <h5 class="card-text">Endstop @route.Stops.Last().StopAddress</h5>
-                <h5 class="card-text">Estimated Arrival @route.Stops.Last().StopTimestamp.ToString("mm:hh dd/MM-yy")</h5>
+                <h5 class="card-text">Endstop @route.Stops.First().StopAddress</h5>
+                <h5 class="card-text">Estimated Arrival @route.Stops.First().StopTimestamp.ToString("mm:hh dd/MM-yy")</h5>
             }
 
             <h5 class="card-text">Seats available @route.Car.AvailableSeats</h5>

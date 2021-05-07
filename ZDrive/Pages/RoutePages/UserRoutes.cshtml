@@ -33,14 +33,13 @@ else
                 <h5 class="card-text">Route ID @route.RouteId</h5>
                 @if (@route.Stops.Count() != 0)
                 {
-                    <h5 class="card-text">Endstop @route.Stops.Last().StopAddress</h5>
-                    <h5 class="card-text">Estimated Arrival @route.Stops.Last().StopTimestamp.ToString("mm:hh dd/MM-yy")</h5>
+                    <h5 class="card-text">Endstop @route.Stops.First().StopAddress</h5>
+                    <h5 class="card-text">Estimated Arrival @route.Stops.First().StopTimestamp.ToString("mm:hh dd/MM-yy")</h5>
                 }
                 <div class="d-flex justify-content-around mt-4 mb-2">
                     <a class="btn btn-primary col-5" asp-page="/RoutePages/UpdateRoute" asp-route-rid="@route.RouteId">See
                         stops</a>
-                    <a class="btn btn-primary col-5" asp-page="/UserPages/ReserveSeat"
-                asp-route-routeId="@route.RouteId">ReserveSeat</a>
+                    <a class="btn btn-primary col-5">Delete</a>
                 </div>
             </div>
         </div>

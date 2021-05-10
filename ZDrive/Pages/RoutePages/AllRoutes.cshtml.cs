@@ -31,19 +31,11 @@ namespace ZDrive.Pages.RoutePages
             if (Filter.StopAddress != null)
             {
                 List<Stop> stops = StopService.AllStops().Where(s => s.StopAddress.ToLower().Contains(Filter.StopAddress.ToLower())).ToList();
-
-                foreach(var stop in stops)
-                {
-                    Route route = RouteService.AllRoutes().ToList().Find(r => r.Stops.Contains(stop));
-                    if (!Routes.Contains(route))
-                    {
-                        Routes.Add(route);
-                    }
-                }
+                Routes = GetRoutesByStops(stops).OrderBy(r => r.RouteId).ToList();
             }
             else
             {
-                Routes = RouteService.AllRoutes().ToList();
+                Routes = RouteService.AllRoutes().OrderBy(r => r.RouteId).ToList();
             }
 
             foreach (Route route in Routes)
@@ -51,6 +43,21 @@ namespace ZDrive.Pages.RoutePages
                 route.Stops = StopService.AllStops().Where(s => route.RouteId == s.RouteId).ToList();
                 route.Car = CarService.AllCars().Where(car => car.Licenseplate == route.CarID).FirstOrDefault();
             }
+        }
+
+        public List<Route> GetRoutesByStops(List<Stop> stops)
+        {
+            List<Route> RouteList = new List<Route>();
+
+            foreach (var stop in stops)
+            {
+                Route route = RouteService.AllRoutes().ToList().Find(r => r.RouteId == stop.RouteId);
+                if (!RouteList.Contains(route))
+                {
+                    RouteList.Add(route);
+                }
+            }
+            return RouteList;
         }
 
         public IActionResult OnPost(int rid)

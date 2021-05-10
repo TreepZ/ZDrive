@@ -1,0 +1,38 @@
+﻿@page
+@model ZDrive.Pages.UserPages.UserInfoModel
+@{
+}
+<div>
+    <img height="320" width="320" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" />
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text float-left text-light d-inline">Username:</p>
+            <p class="card-text float-right text-info d-inline">Testman</p>
+        </div>
+        <div class="card-body">
+            <p class="card-text float-left text-light d-inline">E-mail:</p>
+            <p class="card-text float-right text-info d-inline">Testmail</p>
+        </div>
+        <div class="card-body">
+            <p class="card-text float-left text-light d-inline">Type:</p>
+            <p class="card-text float-right text-info d-inline">Passenger</p>
+        </div>
+        <div class="card-body">
+            <p class="card-text float-left text-light d-inline">Cars:</p>
+            <p class="card-text float-right text-info d-inline">AD12345</p>
+        </div>
+        @*<div class="card-footer">
+                <form class="form-inline" asp-page="/Account/LogOut"
+                      method="post">
+                    <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                </form>
+            </div>*@
+    </div>
+</div>
+
+@*@if (Model.User.Routes.Count() != 0)
+{
+    @foreach (var r in Model.User.Routes)
+    {
+    ROUTES!
+    *@

@@ -64,6 +64,14 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Admin">Admin Page</a>
                         </li>
+                        <ul class=" navbar-nav  ml-auto">
+                            <li class="nav-item">
+                                <form class="form-inline" asp-page="/UserPages/UserInfo"
+                                        method="post">
+                                    <button type="submit" class="nav-link btn btn-link text-dark">User.Identity.Username</button>
+                                </form>
+                            </li>
+                        </ul>
                     </ul>
                 </div>
             </div>

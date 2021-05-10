@@ -39,6 +39,6 @@
         <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure?')" />
     </form>
     <div>
-        <a asp-page="/UserPages/AllUsers">Back to List</a>
+        <a asp-page="/RoutePages/UpdateRoute" asp-route-rid="@Model.RouteStop.RouteId">Back to List</a>
     </div>
 </div>

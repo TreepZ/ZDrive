@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using ZDrive.Interfaces;
 using ZDrive.Models;
 
@@ -26,9 +27,9 @@ namespace ZDrive.Services
             {
                 server.Cars.Add(c);
             }
-            catch (System.Exception)
+            catch (DbUpdateException dbex)
             {
-                throw new Exception("Car with same license plate is already registered");
+                throw dbex;
             }
             server.SaveChanges();
         }

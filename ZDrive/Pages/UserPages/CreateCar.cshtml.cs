@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZDrive.Models;
 using ZDrive.Services;
 using ZDrive.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace ZDrive.Pages.UserPages
 {
@@ -39,9 +40,9 @@ namespace ZDrive.Pages.UserPages
             {
                 service.AddCar(Car);
             }
-            catch (Exception ex)
+            catch (DbUpdateException ex)
             {
-                ModelState.AddModelError(string.Empty, ex.Message);
+                ModelState.AddModelError(string.Empty, "License plate already registered");
                 return Page();
             }
             return RedirectToPage("/UserPages/UserCars", new { uid = Car.UserId });

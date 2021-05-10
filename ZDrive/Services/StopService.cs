@@ -27,9 +27,10 @@ namespace ZDrive.Services
             return server.Stops;
         }
 
-        public void DeleteStop(Stop s)
+        public void DeleteStop(Stop stop)
         {
-            throw new NotImplementedException();
+            server.Stops.Remove(stop);
+            server.SaveChanges();
         }
 
         public Stop GetStop(int stopId)

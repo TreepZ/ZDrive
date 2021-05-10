@@ -11,7 +11,7 @@ namespace ZDrive.Interfaces
     {
         void AddStop(Stop s);
         IEnumerable<Stop> AllStops();
-        void DeleteStop(Stop s);
+        void DeleteStop(Stop stop);
         void UpdateStop(Stop s);
         Stop GetStop(int stopId);
     }

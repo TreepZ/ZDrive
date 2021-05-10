@@ -61,7 +61,8 @@ else
             <div class="d-flex justify-content-around mt-4 mb-2">
                 <a class="btn btn-primary col-5">Update
                     Stop</a>
-                <button class="btn btn-primary col-5">Delete</button>
+                <a asp-page="/StopPages/DeleteRouteStop" asp-route-id="@stop.StopId" class="btn btn-primary col-5">
+                    Delete</a>
             </div>
         </div>
     </div>

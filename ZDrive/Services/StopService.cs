@@ -24,7 +24,7 @@ namespace ZDrive.Services
 
         public IEnumerable<Stop> AllStops()
         {
-            return server.Stops;
+            return server.Stops.OrderBy(s => s.StopTimestamp);
         }
 
         public void DeleteStop(Stop stop)
@@ -40,12 +40,12 @@ namespace ZDrive.Services
                 .ThenInclude(r => r.User)
                 .Where(s => s.StopId == stopId).FirstOrDefault();
                 //.ThenInclude(u => u.Cars.Where(c => c.UserId == u.UserId))
-            //throw new NotImplementedException();
         }
 
         public void UpdateStop(Stop s)
         {
-            throw new NotImplementedException();
+            server.Stops.Update(s);
+            server.SaveChanges();
         }
     }
 }

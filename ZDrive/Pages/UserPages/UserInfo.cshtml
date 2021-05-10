@@ -2,24 +2,30 @@
 @model ZDrive.Pages.UserPages.UserInfoModel
 @{
 }
-<div>
-    <img height="320" width="320" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" />
+<div class="float-left">
+    <img height="300" width="300" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" />
     <div class="card">
         <div class="card-body">
-            <p class="card-text float-left text-light d-inline">Username:</p>
-            <p class="card-text float-right text-info d-inline">Testman</p>
+            <p class="card-text float-left text-dark d-inline">Username:</p>
+            <p class="card-text float-right text-info d-inline">@Model.Users.FirstOrDefault().UserName</p>
         </div>
         <div class="card-body">
-            <p class="card-text float-left text-light d-inline">E-mail:</p>
-            <p class="card-text float-right text-info d-inline">Testmail</p>
+            <p class="card-text float-left text-dark d-inline">E-mail:</p>
+            <p class="card-text float-right text-info d-inline">@Model.Users.FirstOrDefault().UserEmail</p>
         </div>
         <div class="card-body">
-            <p class="card-text float-left text-light d-inline">Type:</p>
-            <p class="card-text float-right text-info d-inline">Passenger</p>
+            <p class="card-text float-left text-dark d-inline">Type:</p>
+            <p class="card-text float-right text-info d-inline">@Model.Users.FirstOrDefault().UserType</p>
         </div>
         <div class="card-body">
-            <p class="card-text float-left text-light d-inline">Cars:</p>
-            <p class="card-text float-right text-info d-inline">AD12345</p>
+            <p class="card-text float-left text-dark d-inline">Cars:</p>
+            @if (Model.User.Cars.Count() != 0)
+            {
+                @foreach (var c in Model.User.Cars)
+                {
+                    <p class="card-text float-right text-info d-inline">@c.Licenseplate</p>
+                }
+            }
         </div>
         @*<div class="card-footer">
                 <form class="form-inline" asp-page="/Account/LogOut"
@@ -30,9 +36,15 @@
     </div>
 </div>
 
-@*@if (Model.User.Routes.Count() != 0)
+@if (Model.User.Routes.Count() != 0)
 {
     @foreach (var r in Model.User.Routes)
     {
-    ROUTES!
-    *@
+        <div class="card">
+            <div class="card-body">
+                <p class="card-text float-left text-light d-inline">Route</p>
+                <p class="card-text float-right text-info d-inline">@r.RouteId</p>
+            </div>
+        </div>
+    }
+}

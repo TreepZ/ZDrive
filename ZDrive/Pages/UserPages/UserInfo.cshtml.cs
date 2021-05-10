@@ -15,7 +15,8 @@ namespace ZDrive.Pages.UserPages
     {
         [BindProperty]
         public User User { get; set; }
-        IUserService service;
+        public IEnumerable<User> Users { get; set; }
+        private IUserService service;
 
         public UserInfoModel(IUserService service)
         {
@@ -23,6 +24,8 @@ namespace ZDrive.Pages.UserPages
         }
         public IActionResult OnGet()
         {
+            Users = service.AllUsers();
+            User = Users.FirstOrDefault();
             return Page();
         }
     }

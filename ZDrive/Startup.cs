@@ -32,6 +32,7 @@ namespace ZDrive
             services.AddTransient<IRouteService, RouteService>();
             services.AddTransient<IStopsService, StopService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IReserveService, ReserveService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

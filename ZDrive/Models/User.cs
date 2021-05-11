@@ -14,6 +14,7 @@ namespace ZDrive.Models
         public User()
         {
             Cars = new HashSet<Car>();
+            ReservedSeats = new HashSet<ReservedSeat>();
             Routes = new HashSet<Route>();
         }
 
@@ -37,6 +38,8 @@ namespace ZDrive.Models
 
         [InverseProperty(nameof(Car.User))]
         public virtual ICollection<Car> Cars { get; set; }
+        [InverseProperty(nameof(ReservedSeat.User))]
+        public virtual ICollection<ReservedSeat> ReservedSeats { get; set; }
         [InverseProperty(nameof(Route.User))]
         public virtual ICollection<Route> Routes { get; set; }
     }

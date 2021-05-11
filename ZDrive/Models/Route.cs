@@ -13,6 +13,7 @@ namespace ZDrive.Models
     {
         public Route()
         {
+            ReservedSeats = new HashSet<ReservedSeat>();
             Stops = new HashSet<Stop>();
         }
 
@@ -21,14 +22,19 @@ namespace ZDrive.Models
         public int RouteId { get; set; }
         [Column("UserID")]
         public int UserId { get; set; }
+        [Column("CarID")]
+        [StringLength(50)]
+        public string CarId { get; set; }
 
+        [ForeignKey(nameof(CarId))]
+        [InverseProperty("Routes")]
+        public virtual Car Car { get; set; }
         [ForeignKey(nameof(UserId))]
         [InverseProperty("Routes")]
         public virtual User User { get; set; }
+        [InverseProperty(nameof(ReservedSeat.Route))]
+        public virtual ICollection<ReservedSeat> ReservedSeats { get; set; }
         [InverseProperty(nameof(Stop.Route))]
         public virtual ICollection<Stop> Stops { get; set; }
-        [Required]
-        public string CarID { get; set; }
-        public virtual Car Car { get; set; }
     }
 }

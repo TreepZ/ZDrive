@@ -25,7 +25,7 @@ namespace ZDrive.Services
 
         public IEnumerable<Route> AllRoutes()
         {
-            return server.Routes;
+            return server.Routes.Include(r => r.User).Include(r => r.Car);
         }
 
         public void DeleteRoute(Route r)
@@ -41,7 +41,7 @@ namespace ZDrive.Services
         public void UpdateRoute(Route r)
         {
             Route route = AllRoutes().ToList().Find(route => route.RouteId == r.RouteId);
-            route.CarID = r.CarID;
+            route.CarId = r.CarId;
             route.UserId = r.UserId;
             server.SaveChanges();
         }

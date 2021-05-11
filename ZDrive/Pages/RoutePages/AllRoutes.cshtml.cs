@@ -14,15 +14,16 @@ namespace ZDrive.Pages.RoutePages
         private IRouteService RouteService;
         private IStopsService StopService;
         private ICarService CarService;
+        private IReserveService reserveService;
         public List<Route> Routes { get; set; }
         [BindProperty(SupportsGet = true)]
         public Stop Filter { get; set; }
-
-        public AllRoutesModel(IRouteService rService, IStopsService sService,ICarService cService)
+        public AllRoutesModel(IRouteService rService, IStopsService sService, ICarService cService, IReserveService reService)
         {
             RouteService = rService;
             StopService = sService;
             CarService = cService;
+            reserveService = reService;
             Routes = new List<Route>();
         }
 
@@ -41,8 +42,9 @@ namespace ZDrive.Pages.RoutePages
             foreach (Route route in Routes)
             {
                 route.Stops = StopService.AllStops().Where(s => route.RouteId == s.RouteId).ToList();
-                route.Car = CarService.AllCars().Where(car => car.Licenseplate == route.CarID).FirstOrDefault();
+                route.Car = CarService.AllCars().Where(car => car.Licenseplate == route.CarId).FirstOrDefault();
             }
+
         }
 
         public List<Route> GetRoutesByStops(List<Stop> stops)
@@ -63,13 +65,12 @@ namespace ZDrive.Pages.RoutePages
         public IActionResult OnPost(int rid)
         {
             Route route = RouteService.GetRoute(rid);
-            route.Car = CarService.AllCars().ToList().Find(c => c.Licenseplate == route.CarID);
+            route.Car = CarService.AllCars().ToList().Find(c => c.Licenseplate == route.CarId);
             route.Car.AvailableSeats--;
             CarService.UpdateCar(route.Car);
-
+            reserveService.AddReservation(new ReservedSeat() { RouteId = rid, UserId = 3002 });
             OnGet();
             return Page();
         }
-
     }
 }

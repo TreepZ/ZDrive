@@ -12,25 +12,26 @@ namespace ZDrive.Models
     [Table("Car")]
     public partial class Car
     {
+        public Car()
+        {
+            Routes = new HashSet<Route>();
+        }
+
         [Key]
-        [StringLength(7, MinimumLength = 7)]
-        [Display(Name = "License plate")]
-        [Required]
+        [StringLength(50)]
         public string Licenseplate { get; set; }
-        [Display(Name = "Number of passenger seats")]
-        [Range(1, 5)]
-        [Required]
         public int NumberOfSeats { get; set; }
         public int AvailableSeats { get; set; }
-        [Display(Name = "Size of car")]
         [Required]
+        [StringLength(50)]
         public string SizeOfCar { get; set; }
         [Column("UserID")]
-        [Required]
         public int UserId { get; set; }
 
         [ForeignKey(nameof(UserId))]
         [InverseProperty("Cars")]
         public virtual User User { get; set; }
+        [InverseProperty(nameof(Route.Car))]
+        public virtual ICollection<Route> Routes { get; set; }
     }
 }

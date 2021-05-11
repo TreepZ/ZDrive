@@ -16,16 +16,19 @@ namespace ZDrive.Pages.UserPages
         [BindProperty]
         public User User { get; set; }
         public IEnumerable<User> Users { get; set; }
+        public IEnumerable<ReservedSeat> ReservedSeats { get; set; }
         private IUserService service;
-
-        public UserInfoModel(IUserService service)
+        private IReserveService reserveService;
+        public UserInfoModel(IUserService service, IReserveService rService)
         {
             this.service = service;
+            reserveService = rService;
         }
         public IActionResult OnGet()
         {
             Users = service.AllUsers();
             User = Users.FirstOrDefault();
+            ReservedSeats = reserveService.GetReservedSeats();
             return Page();
         }
     }

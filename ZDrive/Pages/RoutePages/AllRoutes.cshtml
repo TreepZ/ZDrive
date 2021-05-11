@@ -46,7 +46,8 @@
     <div id="@route.RouteId-card" class="shadow card m-3">
         <div class="card-body p-3">
             <h5 class="card-text">Route ID @route.RouteId</h5>
-
+            <h5>Driver @route.User.UserName</h5>
+            <h5>Car Licenseplate @route.Car.Licenseplate</h5>
             @if (@route.Stops.Count() != 0)
             {
                 <h5 class="card-text">Endstop @route.Stops.First().StopAddress</h5>

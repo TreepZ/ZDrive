@@ -9,7 +9,7 @@ using ZDrive.Services;
 using ZDrive.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace ZDrive.Pages.UserPages
+namespace ZDrive.Pages.CarPages
 {
     public class CreateCarModel : PageModel
     {
@@ -45,7 +45,7 @@ namespace ZDrive.Pages.UserPages
                 ModelState.AddModelError(string.Empty, "License plate already registered");
                 return Page();
             }
-            return RedirectToPage("/UserPages/UserCars", new { uid = Car.UserId });
+            return RedirectToPage("/CarPages/UserCars", new { uid = Car.UserId });
         }
     }
 }

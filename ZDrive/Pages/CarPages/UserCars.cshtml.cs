@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZDrive.Models;
 using ZDrive.Interfaces;
 
-namespace ZDrive.Pages.UserPages
+namespace ZDrive.Pages.CarPages
 {
     public class UserCarsModel : PageModel
     {

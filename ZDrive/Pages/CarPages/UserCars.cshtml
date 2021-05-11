@@ -1,11 +1,11 @@
 ﻿@page
-@model ZDrive.Pages.UserPages.UserCarsModel
+@model ZDrive.Pages.CarPages.UserCarsModel
 @{
 }
 <div class="text-center">
     <h1>@Model.User.UserName's Cars</h1>
 </div>
-<a asp-page="/UserPages/CreateCar" asp-route-userID="@Model.User.UserId" class="btn btn-primary m-3">Add Car</a>
+<a asp-page="/CarPages/CreateCar" asp-route-userID="@Model.User.UserId" class="btn btn-primary m-3">Add Car</a>
 @foreach (var car in Model.Cars)
 {
     <div class="shadow card m-3">

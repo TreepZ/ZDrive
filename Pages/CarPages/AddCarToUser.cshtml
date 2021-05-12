@@ -1,0 +1,34 @@
+﻿@page
+@model ZDrive.Pages.CarPages.AddCarToUserModel
+@{
+}
+<h1>List of available cars</h1>
+@* <a href="/UserPages/CreateCar">Create new car</a> *@
+<table class="table">
+    <thead>
+        <tr>
+            <th>License Plate</th>
+            <th>Current User</th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- OwO -->
+        @if (Model.Cars.Count() > 0)
+        {
+            @foreach (var item in Model.Cars)
+            {
+                <tr>
+                    <td>@item.Licenseplate</td>
+                    <td>@item.UserId</td>
+                    <td>
+                        <form method="post">
+                            <input type="hidden" asp-for="@Model.Car.Licenseplate" readonly value="@item.Licenseplate"
+                        class="form-control" />
+                            <button type="submit" class="btn-primary">Add car to my profile</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+</table>

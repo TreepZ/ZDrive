@@ -1,0 +1,50 @@
+@page
+@model ZDrive.Pages.StopPages.AllStopsModel
+@{
+}
+<div class="text-center">
+    <h1>All Stops</h1>
+</div>
+<a asp-page="/StopPages/CreateStop" class="btn btn-primary m-3">Add Stop</a>
+@foreach (var stop in Model.Stops)
+{
+    <div class="shadow card m-3">
+        <div class="card-body p-3">
+            <h5 class="card-text">Stop ID @stop.StopId</h5>
+            <h5 class="card-text">Endstop @stop.StopAddress</h5>
+            <h5 class="card-text">Estimated Arrival @stop.StopTimestamp.ToString("mm:hh dd/MM-yy")</h5>
+            <h5 class="card-text">Route? @stop.RouteId</h5>
+            <div class="d-flex justify-content-around mt-4 mb-2">
+                <a class="btn btn-primary col-5">Update stops</a>
+                <a class="btn btn-primary col-5">Delete</a>
+            </div>
+        </div>
+    </div>
+}
+
+@* <table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+    <th>ID</th>
+    <th>Address</th>
+    <th>Estimated Arrival</th>
+    <th>Route?</th>
+    <th>Info</th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (Model.Stops != null)
+    {
+    @foreach (var s in Model.Stops)
+    {
+    <tr>
+    <td>@s.StopId</td>
+    <td>@s.StopAddress</td>
+    <td>@s.StopTimestamp</td>
+    <td>@s.RouteId</td>
+    <td><a asp-page="./StopInfo" asp-route-stopID="@s.StopId" asp-route-routeID="@s.RouteId">See info</a></td>
+    </tr>
+    }
+    }
+    </tbody>
+    </table> *@

@@ -11,8 +11,8 @@ namespace ZDrive.Services
 {
     public class StopService : IStopsService
     {
-        private ZdriveContext server;
-        public StopService(ZdriveContext context)
+        private ZDriveIdentityDbContext server;
+        public StopService(ZDriveIdentityDbContext context)
         {
             server = context;
         }

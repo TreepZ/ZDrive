@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 #nullable disable
@@ -28,19 +29,17 @@ namespace ZDrive.Models
         [StringLength(50)]
         public string UserName { get; set; }
         [Required]
-        [StringLength(20, MinimumLength = 6)]
-        [MaxLength]
-        public string UserPass { get; set; }
-        [Required]
         [StringLength(50)]
         [EmailAddress]
         public string UserEmail { get; set; }
-
-        [InverseProperty(nameof(Car.User))]
+        public string AspUserId { get; set; }
+        [ForeignKey(nameof(AspUserId))]
+        public virtual IdentityUser AspUser { get; set; }
         public virtual ICollection<Car> Cars { get; set; }
         [InverseProperty(nameof(ReservedSeat.User))]
         public virtual ICollection<ReservedSeat> ReservedSeats { get; set; }
         [InverseProperty(nameof(Route.User))]
         public virtual ICollection<Route> Routes { get; set; }
-    }
+        
+}
 }

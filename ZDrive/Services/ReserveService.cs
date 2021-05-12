@@ -11,8 +11,8 @@ namespace ZDrive.Services
 {
     public class ReserveService : IReserveService
     {
-        private ZdriveContext context;
-        public ReserveService(ZdriveContext _context)
+        private ZDriveIdentityDbContext context;
+        public ReserveService(ZDriveIdentityDbContext _context)
         {
             context = _context;
         }

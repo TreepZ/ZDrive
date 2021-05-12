@@ -11,8 +11,8 @@ namespace ZDrive.Services
 {
     public class CarService : ICarService
     {
-        private ZdriveContext server;
-        public CarService(ZdriveContext context)
+        private ZDriveIdentityDbContext server;
+        public CarService(ZDriveIdentityDbContext context)
         {
             server = context;
         }

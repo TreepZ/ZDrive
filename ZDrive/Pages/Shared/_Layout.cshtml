@@ -6,38 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ZDrive</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="~/css/site.css" />
     <style>
-        body{
+        body {
             background-color: #faf9f5;
         }
 
-        .btn-primary-outline{
+        .btn-primary-outline {
             border-color: #E49900;
             color: #E49900;
             border-radius: 20px;
         }
-        .btn-primary-outline:hover{
-            border-color: #E49900;
-            color: #E49900;
-        }
-        .btn-primary-outline:focus{
-            border-color: #E49900;
-            color: #E49900;
-        }
-        .btn-primary{
+
+            .btn-primary-outline:hover {
+                border-color: #E49900;
+                color: #E49900;
+            }
+
+            .btn-primary-outline:focus {
+                border-color: #E49900;
+                color: #E49900;
+            }
+
+        .btn-primary {
             background-color: #E49900;
             border: none;
             border-radius: 20px;
         }
-        .btn-primary:hover{
-            background-color: #CE6F00;
-        }
-        .btn-primary:focus{
-            background-color: #CE6F00;
-        }
-        .card, .card-body{
+
+            .btn-primary:hover {
+                background-color: #CE6F00;
+            }
+
+            .btn-primary:focus {
+                background-color: #CE6F00;
+            }
+
+        .card, .card-body {
             border: none;
             border-radius: 5px;
         }
@@ -50,7 +56,7 @@
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">ZDrive</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
@@ -71,6 +77,8 @@
                                 </form>
                             </li>
                         </ul>
+                        <partial name="_LoginPartial" />
+
                     </ul>
                 </div>
             </div>
@@ -83,17 +91,17 @@
         </main>
     </div>
 
-@*     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - ZDrive - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer> *@
+    @*     <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2021 - ZDrive - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            </div>
+        </footer> *@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-        crossorigin="anonymous"></script>
+            integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+            crossorigin="anonymous"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)

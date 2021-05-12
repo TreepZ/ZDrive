@@ -11,8 +11,8 @@ namespace ZDrive.Services
 {
     public class RouteService : IRouteService
     {
-        private ZdriveContext server;
-        public RouteService(ZdriveContext context)
+        private ZDriveIdentityDbContext server;
+        public RouteService(ZDriveIdentityDbContext context)
         {
             server = context;
         }

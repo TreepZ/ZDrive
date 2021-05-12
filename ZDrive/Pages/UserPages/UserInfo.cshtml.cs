@@ -31,24 +31,5 @@ namespace ZDrive.Pages.UserPages
             ReservedSeats = reserveService.GetReservedSeats();
             return Page();
         }
-        public IActionResult OnPost()
-        {
-            if (User.UserType == "Driver")
-            {
-                User.UserType = "Passenger";
-            }
-            else
-            {
-                User.UserType = "Driver";
-            }
-            service.UpdateUser(User);
-            return Page();
-        }
-        public IActionResult OnPostDelete()
-        {
-            service.DeleteUser(User.UserId);
-            //LOGOUT HERE
-            return Page();
-        }
     }
 }

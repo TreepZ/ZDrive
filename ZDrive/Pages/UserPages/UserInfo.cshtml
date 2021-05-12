@@ -28,12 +28,17 @@
                 }
             }
         </div>
-        @*<div class="card-footer">
-            <form class="form-inline" asp-page="/Account/LogOut"
-            method="post">
-            <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+        <div class="card-footer">
+            <form class="form-inline"
+                  method="post">
+                <button type="submit" class="nav-link btn btn-secondary">Change My Type</button>
             </form>
-            </div>*@
+            <br />
+            <form class="form-inline"
+                  method="post" asp-page-handler="Delete">
+                <button type="submit" class="nav-link btn btn-danger">Delete Account</button>
+            </form>
+        </div>
     </div>
 </div>
 

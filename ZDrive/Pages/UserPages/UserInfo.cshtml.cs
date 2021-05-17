@@ -8,21 +8,26 @@ using ZDrive.Models;
 using ZDrive.Services;
 using ZDrive.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace ZDrive.Pages.UserPages
 {
+    [Authorize(Roles = "Driver, Passenger")]
     public class UserInfoModel : PageModel
     {
+        private UserManager<IdentityUser> userManager;
         [BindProperty]
-        public User User { get; set; }
-        public IEnumerable<User> Users { get; set; }
+        public ZUser User { get; set; }
+        public IEnumerable<ZUser> Users { get; set; }
         public IEnumerable<ReservedSeat> ReservedSeats { get; set; }
         private IUserService service;
         private IReserveService reserveService;
-        public UserInfoModel(IUserService service, IReserveService rService)
+        public UserInfoModel(IUserService service, IReserveService rService, UserManager<IdentityUser> userManager)
         {
             this.service = service;
             reserveService = rService;
+            this.userManager = userManager;
         }
         public IActionResult OnGet()
         {

@@ -14,13 +14,15 @@ namespace ZDrive.Areas.Identity
     {
         public void Configure(IWebHostBuilder builder)
         {
-            builder.ConfigureServices((context, services) => {
+            builder.ConfigureServices((context, services) =>
+            {
                 services.AddDbContext<ZDriveIdentityDbContext>(options =>
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("ZDriveIdentityDbContextConnection")));
-
-                services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                services.AddDefaultIdentity<IdentityUser>()
+                    .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<ZDriveIdentityDbContext>();
+                services.AddAuthorization();
             });
         }
     }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZDrive.Interfaces;
@@ -9,16 +10,17 @@ using ZDrive.Models;
 
 namespace ZDrive.Pages.UserPages
 {
+    [Authorize(Roles = "Passenger")]
     public class AllUsersModel : PageModel
     {
         private IUserService Service;
-        public List<User> Users { get; set; }
+        public List<ZUser> Users { get; set; }
         [BindProperty(SupportsGet = true)]
-        public User Filter { get; set; }
+        public ZUser Filter { get; set; }
         public AllUsersModel(IUserService service)
         {
             Service = service;
-            Users = new List<User>();
+            Users = new List<ZUser>();
         }
 
         public void OnGet()

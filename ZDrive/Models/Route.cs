@@ -31,7 +31,7 @@ namespace ZDrive.Models
         public virtual Car Car { get; set; }
         [ForeignKey(nameof(UserId))]
         [InverseProperty("Routes")]
-        public virtual User User { get; set; }
+        public virtual ZUser User { get; set; }
         [InverseProperty(nameof(ReservedSeat.Route))]
         public virtual ICollection<ReservedSeat> ReservedSeats { get; set; }
         [InverseProperty(nameof(Stop.Route))]

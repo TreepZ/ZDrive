@@ -7,15 +7,17 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZDrive.Models;
 using ZDrive.Services;
 using ZDrive.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ZDrive.Pages.UserPages
 {
+    [Authorize(Roles = "Driver, Passenger")]
     public class DeleteUserModel : PageModel
     {
         IUserService service;
 
         [BindProperty]
-        public User User { get; set; }
+        public ZUser User { get; set; }
 
         public DeleteUserModel(IUserService service)
         {

@@ -23,6 +23,6 @@ namespace ZDrive.Models
         public virtual Route Route { get; set; }
         [ForeignKey(nameof(UserId))]
         [InverseProperty("ReservedSeats")]
-        public virtual User User { get; set; }
+        public virtual ZUser User { get; set; }
     }
 }

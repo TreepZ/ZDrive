@@ -15,13 +15,13 @@ namespace ZDrive.Services
         {
             server = context;
         }
-     
-        public IEnumerable<User> AllUsers()
+
+        public IEnumerable<ZUser> AllUsers()
         {
-            return server.Users;
+            return server.ZUsers;
         }
 
-        public void AddUser(User u)
+        public void AddUser(ZUser u)
         {
             if (!isEmailValid(u.UserEmail))
             {
@@ -29,7 +29,7 @@ namespace ZDrive.Services
             }
             else
             {
-                server.Users.Add(u);
+                server.ZUsers.Add(u);
                 server.SaveChanges();
             }
         }
@@ -47,23 +47,24 @@ namespace ZDrive.Services
 
         public void DeleteUser(int id)
         {
-            User @user = server.Users.Where(us => us.UserId == id).FirstOrDefault();
-            server.Users.Remove(@user);
+            ZUser @user = server.ZUsers.Where(us => us.UserId == id).FirstOrDefault();
+            server.ZUsers.Remove(@user);
             server.SaveChanges();
         }
 
-        public void UpdateUser(User u)
+        public void UpdateUser(ZUser u)
         {
             if (!isEmailValid(u.UserEmail))
             {
                 throw new ArgumentException("Email Invalid");
             }
-            else { 
-            User @user = server.Users.Where(us => us.UserId == u.UserId).FirstOrDefault();
-            @user.UserName = u.UserName;
-            @user.UserEmail = u.UserEmail;
-            @user.UserType = u.UserType;
-            server.SaveChanges();
+            else
+            {
+                ZUser @user = server.ZUsers.Where(us => us.UserId == u.UserId).FirstOrDefault();
+                @user.UserName = u.UserName;
+                @user.UserEmail = u.UserEmail;
+                @user.UserType = u.UserType;
+                server.SaveChanges();
             }
         }
 

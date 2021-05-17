@@ -6,10 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZDrive.Models;
 using ZDrive.Interfaces;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace ZDrive.Pages.RoutePages
 {
+    [Authorize(Roles = "Driver")]
     public class UserRoutesModel : PageModel
     {
         private IRouteService RouteService;
@@ -28,7 +29,7 @@ namespace ZDrive.Pages.RoutePages
         {
             UserID = uid;
             Routes = RouteService.AllRoutes().Where(r => r.UserId == uid).ToList();
-            foreach(Route route in Routes)
+            foreach (Route route in Routes)
             {
                 route.Stops = StopService.AllStops().Where(s => s.RouteId == route.RouteId).ToList();
             }

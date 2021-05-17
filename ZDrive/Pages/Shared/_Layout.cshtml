@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject UserManager<IdentityUser> UserManager
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -73,6 +76,7 @@
                         </li>
                         <ul class=" navbar-nav  ml-auto">
                             <li class="nav-item">
+
                                 <form class="form-inline" asp-page="/UserPages/UserInfo" method="get">
                                     <button type="submit"
                                         class="nav-link btn btn-link text-dark">@UserManager.GetUserName(User)</button>

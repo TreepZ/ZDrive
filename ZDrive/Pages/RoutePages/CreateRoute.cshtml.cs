@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZDrive.Models;
 using ZDrive.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ZDrive.Pages.RoutePages
 {
+    [Authorize(Roles = "Driver")]
     public class CreateRouteModel : PageModel
     {
         private IRouteService RouteService;

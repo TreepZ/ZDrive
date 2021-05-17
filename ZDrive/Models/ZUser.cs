@@ -10,9 +10,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ZDrive.Models
 {
-    public partial class User
+    public partial class ZUser
     {
-        public User()
+        public ZUser()
         {
             Cars = new HashSet<Car>();
             ReservedSeats = new HashSet<ReservedSeat>();
@@ -40,6 +40,6 @@ namespace ZDrive.Models
         public virtual ICollection<ReservedSeat> ReservedSeats { get; set; }
         [InverseProperty(nameof(Route.User))]
         public virtual ICollection<Route> Routes { get; set; }
-        
-}
+
+    }
 }

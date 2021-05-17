@@ -9,9 +9,9 @@ namespace ZDrive.Interfaces
 {
     public interface IUserService
     {
-        void AddUser(User u);
-        IEnumerable<User> AllUsers();
+        void AddUser(ZUser u);
+        IEnumerable<ZUser> AllUsers();
         void DeleteUser(int id);
-        void UpdateUser(User u);
+        void UpdateUser(ZUser u);
     }
 }

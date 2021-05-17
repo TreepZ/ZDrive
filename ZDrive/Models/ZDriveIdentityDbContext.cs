@@ -18,7 +18,8 @@ namespace ZDrive.Models
         public virtual DbSet<ReservedSeat> ReservedSeats { get; set; }
         public virtual DbSet<Route> Routes { get; set; }
         public virtual DbSet<Stop> Stops { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<ZUser> ZUsers { get; set; }
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -92,7 +93,7 @@ namespace ZDrive.Models
                     .HasConstraintName("FK__Stops__RouteID__6E01572D");
             });
 
-            modelBuilder.Entity<User>(entity =>
+            modelBuilder.Entity<ZUser>(entity =>
             {
                 entity.HasKey(e => e.UserId);
                 entity.Property(e => e.UserId).IsUnicode(false);
@@ -103,6 +104,8 @@ namespace ZDrive.Models
 
                 entity.Property(e => e.UserType).IsUnicode(false);
             });
+
+            modelBuilder.Entity<IdentityUserRole<string>>().HasKey(r => new { r.RoleId, r.UserId });
 
             OnModelCreatingPartial(modelBuilder);
         }

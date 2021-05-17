@@ -8,9 +8,11 @@ using ZDrive.Models;
 using ZDrive.Services;
 using ZDrive.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ZDrive.Pages.CarPages
 {
+    [Authorize(Roles = "Driver")]
     public class CreateCarModel : PageModel
     {
         [BindProperty]

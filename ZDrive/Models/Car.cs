@@ -30,7 +30,7 @@ namespace ZDrive.Models
 
         [ForeignKey(nameof(UserId))]
         [InverseProperty("Cars")]
-        public virtual User User { get; set; }
+        public virtual ZUser User { get; set; }
         [InverseProperty(nameof(Route.Car))]
         public virtual ICollection<Route> Routes { get; set; }
     }

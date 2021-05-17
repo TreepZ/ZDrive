@@ -6,21 +6,23 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZDrive.Models;
 using ZDrive.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ZDrive.Pages.CarPages
 {
+    [Authorize(Roles = "Driver")]
     public class UserCarsModel : PageModel
     {
         private ICarService Service;
         private IUserService UService;
         public List<Car> Cars { get; private set; }
-        public User User { get; private set; }
+        public ZUser User { get; private set; }
 
         public UserCarsModel(ICarService service, IUserService uservice)
         {
             Service = service;
             UService = uservice;
-            User = new User();
+            User = new ZUser();
         }
 
         public void OnGet(int uid)

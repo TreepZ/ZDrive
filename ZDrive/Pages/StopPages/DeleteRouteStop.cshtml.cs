@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ZDrive.Models;
 using ZDrive.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ZDrive.Pages.StopPages
 {
+    [Authorize(Roles = "Driver")]
     public class DeleteRouteStopModel : PageModel
     {
         private IStopsService StopService;
@@ -32,7 +34,7 @@ namespace ZDrive.Pages.StopPages
             RouteID = (int)RouteStop.RouteId;
             StopService.DeleteStop(RouteStop);
 
-            return RedirectToPage("/RoutePages/UpdateRoute", new { rid = RouteID});
+            return RedirectToPage("/RoutePages/UpdateRoute", new { rid = RouteID });
         }
     }
 }

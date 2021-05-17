@@ -75,7 +75,7 @@
                             <li class="nav-item">
                                 <form class="form-inline" asp-page="/UserPages/UserInfo" method="get">
                                     <button type="submit"
-                                        class="nav-link btn btn-link text-dark">User.Identity.Username</button>
+                                        class="nav-link btn btn-link text-dark">@UserManager.GetUserName(User)</button>
                                 </form>
                             </li>
                         </ul>

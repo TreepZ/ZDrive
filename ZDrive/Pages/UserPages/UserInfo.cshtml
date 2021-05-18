@@ -30,28 +30,33 @@
         </div>
         <div class="card-footer">
             <form class="form-inline" method="post">
+                <input type="hidden" readonly value="@Model.Users.FirstOrDefault()"
+                        class="form-control" />
                 <button type="submit" class="nav-link btn btn-secondary">Change My Type</button>
             </form>
             <br />
             <form class="form-inline" method="post" asp-page-handler="Delete">
+                <input type="hidden" readonly value="@Model.Users.FirstOrDefault()"
+                        class="form-control" />
                 <button type="submit" class="nav-link btn btn-danger">Delete Account</button>
             </form>
         </div>
     </div>
 </div>
 
-@if (Model.User.Routes.Count() != 0)
+<!--@if (Model.Users.FirstOrDefault().Routes.Count() != 0)
 {
-    @foreach (var r in Model.User.Routes)
+    @foreach (var r in Model.Users.FirstOrDefault().Routes)
     {
         <div class="card">
             <div class="card-body">
-                <p class="card-text float-left text-light d-inline">Route</p>
-                <p class="card-text float-right text-info d-inline">@r.RouteId</p>
+                <p class="card-text float-left text-dark d-inline">@r.RouteID</p>
+                <h5 class="card-text">Endstop @r.Stops.First().StopAddress</h5>
+                <h5 class="card-text">Estimated Arrival @r.Stops.First().StopTimestamp.ToString("mm:hh dd/MM-yy")</h5>
             </div>
         </div>
     }
-}
+}-->
 
 <div class="card">
     <div class="card-body">
@@ -60,7 +65,7 @@
         {
             @foreach (var r in Model.ReservedSeats)
             {
-                <p class="card-text float-left text-light d-inline">Route</p>
+                <p class="card-text float-left text-dark d-inline">Route</p>
                 <p class="card-text float-right text-info d-inline">@r.RouteId</p>
             }
         }

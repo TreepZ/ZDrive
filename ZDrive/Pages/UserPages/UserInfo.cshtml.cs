@@ -38,6 +38,7 @@ namespace ZDrive.Pages.UserPages
         }
         public IActionResult OnPost()
         {
+            User = Users.FirstOrDefault();
             if (User.UserType == "Driver")
             {
                 User.UserType = "Passenger";
@@ -51,6 +52,7 @@ namespace ZDrive.Pages.UserPages
         }
         public IActionResult OnPostDelete()
         {
+            User = Users.FirstOrDefault();
             service.DeleteUser(User.UserId);
             //LOGOUT HERE
             return Page();

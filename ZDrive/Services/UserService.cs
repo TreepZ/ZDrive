@@ -35,14 +35,16 @@ namespace ZDrive.Services
         }
         public static bool isEmailValid(String UserEmail)
         {
-            if (!UserEmail.Contains("edu.easj"))
-            {
-                throw new ArgumentException("Email must contain edu.easj");
-            }
-            else
-            {
-                return true;
-            }
+            //if (!UserEmail.Contains("edu.easj"))
+            //{
+            //    throw new ArgumentException("Email must contain edu.easj");
+            //}
+            //else
+            //{
+            //    return true;
+            //}
+
+            return UserEmail.Contains("edu.easj");
         }
 
         public void DeleteUser(int id)

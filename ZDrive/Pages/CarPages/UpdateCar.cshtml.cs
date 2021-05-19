@@ -27,7 +27,7 @@ namespace ZDrive.Pages.CarPages
         {
             if (userID != null)
             {
-                Car = service.AllCars().Where(c => c.UserID = userID);
+                Car = service.AllCars().Where(c => c.UserId == userID).FirstOrDefault();
             }
             //Car.UserId = userID;
             return Page();

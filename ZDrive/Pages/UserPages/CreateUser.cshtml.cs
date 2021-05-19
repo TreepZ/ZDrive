@@ -20,11 +20,13 @@ namespace ZDrive.Pages.UserPages
         private IUserService service;
         private UserManager<IdentityUser> userManager;
         private RoleManager<IdentityRole> roleManager;
-        public CreateUserModel(IUserService service, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        private SignInManager<IdentityUser> signInManager;
+        public CreateUserModel(IUserService service, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<IdentityUser> signInManager)
         {
             this.service = service;
             this.userManager = userManager;
             this.roleManager = roleManager;
+            this.signInManager = signInManager;
         }
         public IActionResult OnGet()
         {
@@ -36,13 +38,16 @@ namespace ZDrive.Pages.UserPages
             {
                 return Page();
             }
+            IdentityUser user = userManager.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
             if (ZUser.UserType == "Driver")
             {
-                var result2 = await userManager.AddToRoleAsync(userManager.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault(), "Driver");
+                var result2 = await userManager.AddToRoleAsync(user, "Driver");
             }
-            var result = await userManager.AddToRoleAsync(userManager.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault(), "Passenger");
+            var result = await userManager.AddToRoleAsync(user, "Passenger");
             ZUser.AspUserId = userManager.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault().Id;
             service.AddUser(ZUser);
+            await signInManager.SignOutAsync();
+            await signInManager.SignInAsync(user, isPersistent: false);
             return RedirectToPage("../Index");
         }
     }

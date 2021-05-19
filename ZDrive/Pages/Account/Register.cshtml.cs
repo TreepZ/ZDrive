@@ -50,6 +50,7 @@ namespace ZDrive.Pages.Account
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
+            [RegularExpression("(@edu.easj.dk)$", ErrorMessage = "Must be of edu.easj.dk domain")]
             public string Email { get; set; }
 
             [Required]

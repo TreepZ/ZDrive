@@ -13,6 +13,6 @@ namespace ZDrive.Interfaces
         IEnumerable<ZUser> AllUsers();
         void DeleteUser(int id);
         void UpdateUser(ZUser u);
-        ZUser GetZUserByIdentityID(string IdentityUserID);
+        ZUser GetZUserByIdentityID(string IdentityUserName);
     }
 }

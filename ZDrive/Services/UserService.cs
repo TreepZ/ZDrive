@@ -73,9 +73,10 @@ namespace ZDrive.Services
             }
         }
 
-        public ZUser GetZUserByIdentityID(string IdentityUserID)
+        public ZUser GetZUserByIdentityID(string IdentityUserName)
         {
-            return server.ZUsers.Where(user => user.AspUserId == IdentityUserID).FirstOrDefault();
+            IdentityUser Iuser = server.Users.Where(user => user.Email == IdentityUserName).FirstOrDefault();
+            return server.ZUsers.Where(user => user.AspUserId == Iuser.Id).FirstOrDefault();
         }
     }
 }

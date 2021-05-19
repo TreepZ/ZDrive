@@ -16,9 +16,9 @@
                 <option value="Driver">Driver</option>
                 <option value="Passenger">Passenger</option>
                 </select> *@
-            <label>Driver?</label>
-            <input type="radio" asp-for="@Model.ZUser.UserType" value="Driver">
-            <input type="radio" asp-for="@Model.ZUser.UserType" value="Passenger" checked style="display: none;">
+            <h3 class="card-text">Do you want to register as a driver?</h3>
+            <label>yes</label><input type="radio" asp-for="@Model.ZUser.UserType" value="Driver">
+            <label>no</label><input type="radio" asp-for="@Model.ZUser.UserType" value="Passenger" checked>
         </div>
         <div class="form-group">
             <label asp-for="ZUser.UserName" class="control-label"></label>
@@ -27,7 +27,7 @@
         </div>
         <div class="form-group">
             <label asp-for="ZUser.UserEmail" class="control-label"></label>
-            <input asp-for="ZUser.UserEmail" class="form-control" />
+            <input asp-for="ZUser.UserEmail" readonly class="form-control" value="@User.Identity.Name" />
             <span asp-validation-for="ZUser.UserEmail" class="text-danger"></span>
         </div>
         <div class="d-flex justify-content-around mt-4 mb-2">

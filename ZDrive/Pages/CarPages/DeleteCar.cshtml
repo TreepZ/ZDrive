@@ -21,10 +21,10 @@
                 @Html.DisplayFor(model => model.Car.SizeOfCar)
             </dd>
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Car.UserID)
+                @Html.DisplayNameFor(model => model.Car.UserId)
             </dt>
         </dl>
-        <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure?')"/>
+        <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure?')" />
     </form>
     <div>
         <a asp-page="/UserPages/UserCars">Back to List</a>

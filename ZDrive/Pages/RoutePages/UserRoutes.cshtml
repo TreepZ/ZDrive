@@ -10,7 +10,8 @@
     <h1>All Routes</h1>
 </div>
 <!-- Add new route link button -->
-<a asp-page="/RoutePages/CreateRoute" asp-route-uid="@Model.UserID" class="btn btn-primary m-3">Add Route</a>
+@* <a asp-page="/RoutePages/CreateRoute" asp-route-uid="@Model.UserID" class="btn btn-primary m-3">Add Route</a> *@
+<a asp-page="/RoutePages/CreateRoute" class="btn btn-primary m-3">Add Route</a>
 @* <button class="btn btn-primary m-3" onclick="$('#filterform').toggle()">Filter options</button>
     <form id="filterform" style="display: none; width:10em;" class="m-3" method="get">
     <label>Filter by address</label>

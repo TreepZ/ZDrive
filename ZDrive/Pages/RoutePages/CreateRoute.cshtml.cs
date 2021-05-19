@@ -15,20 +15,23 @@ namespace ZDrive.Pages.RoutePages
     {
         private IRouteService RouteService;
         private ICarService CarService;
+        private IUserService userService;
         [BindProperty]
         public Route Route { get; set; }
         public List<Car> Cars { get; set; }
 
-        public CreateRouteModel(IRouteService rService, ICarService cService)
+        public CreateRouteModel(IRouteService rService, ICarService cService, IUserService userService)
         {
             RouteService = rService;
             CarService = cService;
+            this.userService = userService;
             Route = new Route();
             Cars = new List<Car>();
         }
 
-        public void OnGet(int uid)
+        public void OnGet()
         {
+            int uid = userService.AllUsers().Where(u => u.UserEmail == User.Identity.Name).FirstOrDefault().UserId;
             Route.UserId = uid;
             Cars = CarService.AllCars().Where(car => car.UserId == uid).ToList();
         }

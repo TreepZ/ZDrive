@@ -14,8 +14,8 @@
             <h5 class="card-text">Number of seats @car.NumberOfSeats</h5>
             <h5 class="card-text">Size @car.SizeOfCar</h5>
             <div class="d-flex justify-content-around mt-4 mb-2">
-                <a class="btn btn-primary col-5">Update Car</a>
-                <a class="btn btn-primary col-5">Delete</a>
+                <a class="btn btn-primary col-5" asp-page="UpdateCar" asp-route-id="@car.UserId">Update Car</a>
+                <a class="btn btn-primary col-5" asp-page="DeleteCar" asp-route-id="@car.UserId">Delete</a>
             </div>
         </div>
     </div>

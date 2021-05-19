@@ -36,7 +36,8 @@ namespace ZDrive.Services
 
         public void DeleteCar(Car c)
         {
-            throw new NotImplementedException();
+            server.Cars.Remove(c);
+            server.SaveChanges();
         }
 
         public Car GetCar(string id)

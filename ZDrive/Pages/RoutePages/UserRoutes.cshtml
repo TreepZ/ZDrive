@@ -46,6 +46,9 @@ else
                     onclick="return confirm('Are you sure?')">
                     </form>
                 </div>
+                <div class="d-flex justify-content-around mt-4 mb-2">
+                    <a class="btn btn-primary col-5" asp-page="/RoutePages/UsersOnRoute" asp-route-rid="@route.RouteId">See Users</a>
+                </div>
             </div>
         </div>
     }

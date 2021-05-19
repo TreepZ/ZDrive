@@ -75,9 +75,12 @@
                         <input class="btn btn-primary w-100" type="submit" value="Reserve" asp-route-rid="@route.RouteId" />
                     </form>
                 }
+                <div class="btn btn-primary-outline col-5">
+                    <a class="btn btn-primary col-5" asp-page="/RoutePages/UsersOnRoute" asp-route-rid="@route.RouteId">See Users</a>
+                </div>
 
                 @*<a class="btn btn-primary col-5" asp-page="/UserPages/ReserveSeat"
-                    asp-route-routeId="@route.RouteId">ReserveSeat</a>*@
+        asp-route-routeId="@route.RouteId">ReserveSeat</a>*@
             </div>
 
         </div>

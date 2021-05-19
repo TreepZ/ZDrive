@@ -8,7 +8,10 @@
     <h1>All Routes</h1>
 </div>
 <!-- Add new route link button -->
-@* <a href="./CreateRoute" class="btn btn-primary m-3">Add Route</a> *@
+@*@if (User.IsInRole("Driver"))
+{
+<a asp-page="/RoutePages/CreateRoute" asp-route-uid="@Model.Use" class="btn btn-primary m-3">Add Route</a>
+}*@
 <button class="btn btn-primary m-3" onclick="$('#filterform').toggle()">Filter options</button>
 <form id="filterform" style="display: none; width:10em;" class="m-3" method="get">
     <label>Filter by address</label>
@@ -17,7 +20,6 @@
     <br />
     <a href="/RoutePages/AllRoutes">Back to full list</a>
 </form>
-
 @* <table class="table">
     @foreach (var route in Model.Routes)
     {

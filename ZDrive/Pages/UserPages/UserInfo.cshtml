@@ -29,15 +29,24 @@
             }
         </div>
         <div class="card-footer">
+            <div class="d-flex justify-content-around mt-4 mb-2">
+                <a class="btn btn-primary col-5" asp-page="UpdateUser" asp-route-id="@Model.User.UserId">Update</a>
+                <form method="post" asp-page-handler="Delete" class="col-5 p-0">
+                    <input class="btn btn-primary" style="min-width: 100%;" type="submit" value="Delete"
+                           onclick="return confirm('Are you sure?')">
+                </form>
+                <a class="btn btn-primary col-5" asp-page="/CarPages/UserCars" asp-route-uid="@Model.User.UserId">Cars</a>
+                <a class="btn btn-primary col-5" asp-page="/RoutePages/UserRoutes" asp-route-uid="@Model.User.UserId">Routes</a>
+            </div>  
             <form class="form-inline" method="post">
                 <input type="hidden" readonly value="@Model.Users.FirstOrDefault()"
-                        class="form-control" />
+                       class="form-control" />
                 <button type="submit" class="nav-link btn btn-secondary">Change My Type</button>
             </form>
             <br />
             <form class="form-inline" method="post" asp-page-handler="Delete">
                 <input type="hidden" readonly value="@Model.Users.FirstOrDefault()"
-                        class="form-control" />
+                       class="form-control" />
                 <button type="submit" class="nav-link btn btn-danger">Delete Account</button>
             </form>
         </div>

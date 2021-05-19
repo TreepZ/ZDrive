@@ -16,19 +16,19 @@ namespace ZDrive.Pages.CarPages
         private ICarService Service;
         private IUserService UService;
         public List<Car> Cars { get; private set; }
-        public ZUser User { get; private set; }
+        public ZUser ZUser { get; private set; }
 
         public UserCarsModel(ICarService service, IUserService uservice)
         {
             Service = service;
             UService = uservice;
-            User = new ZUser();
+            ZUser = new ZUser();
         }
 
         public void OnGet(int uid)
         {
             Cars = Service.AllCars().Where(c => c.UserId == uid).ToList();
-            User = UService.AllUsers().ToList().Find(u => u.UserId == uid);
+            ZUser = UService.AllUsers().ToList().Find(u => u.UserId == uid);
         }
     }
 }

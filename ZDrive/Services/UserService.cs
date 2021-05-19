@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using ZDrive.Interfaces;
 using ZDrive.Models;
 
@@ -11,9 +12,11 @@ namespace ZDrive.Services
     public class UserService : IUserService
     {
         private ZDriveIdentityDbContext server;
-        public UserService(ZDriveIdentityDbContext context)
+        private UserManager<IdentityUser> userManager;
+        public UserService(ZDriveIdentityDbContext context, UserManager<IdentityUser> userManager)
         {
             server = context;
+            this.userManager = userManager;
         }
 
         public IEnumerable<ZUser> AllUsers()
@@ -70,5 +73,9 @@ namespace ZDrive.Services
             }
         }
 
+        public ZUser GetZUserByIdentityID(string IdentityUserID)
+        {
+            return server.ZUsers.Where(user => user.AspUserId == IdentityUserID).FirstOrDefault();
+        }
     }
 }

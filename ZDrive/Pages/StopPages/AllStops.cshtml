@@ -14,10 +14,13 @@
             <h5 class="card-text">Endstop @stop.StopAddress</h5>
             <h5 class="card-text">Estimated Arrival @stop.StopTimestamp.ToString("mm:hh dd/MM-yy")</h5>
             <h5 class="card-text">Route? @stop.RouteId</h5>
+            @if (User.IsInRole("Driver"))
+            {
             <div class="d-flex justify-content-around mt-4 mb-2">
                 <a class="btn btn-primary col-5">Update stops</a>
                 <a class="btn btn-primary col-5">Delete</a>
             </div>
+            }
         </div>
     </div>
 }

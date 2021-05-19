@@ -20,24 +20,33 @@
         </div>
         <div class="card-body">
             <p class="card-text float-left text-dark d-inline">Cars:</p>
-            @if (Model.User.Cars.Count() != 0)
+            @if (Model.ZUser.Cars.Count() != 0)
             {
-                @foreach (var c in Model.User.Cars)
+                @foreach (var c in Model.ZUser.Cars)
                 {
                     <p class="card-text float-right text-info d-inline">@c.Licenseplate</p>
                 }
             }
         </div>
         <div class="card-footer">
+            <div class="d-flex justify-content-around mt-4 mb-2">
+                <a class="btn btn-primary col-5" asp-page="UpdateUser" asp-route-id="@Model.ZUser.UserId">Update</a>
+                <form method="post" asp-page-handler="Delete" class="col-5 p-0">
+                    <input class="btn btn-primary" style="min-width: 100%;" type="submit" value="Delete"
+                           onclick="return confirm('Are you sure?')">
+                </form>
+                <a class="btn btn-primary col-5" asp-page="/CarPages/UserCars" asp-route-uid="@Model.ZUser.UserId">Cars</a>
+                <a class="btn btn-primary col-5" asp-page="/RoutePages/UserRoutes" asp-route-uid="@Model.ZUser.UserId">Routes</a>
+            </div>  
             <form class="form-inline" method="post">
                 <input type="hidden" readonly value="@Model.Users.FirstOrDefault()"
-                        class="form-control" />
+                       class="form-control" />
                 <button type="submit" class="nav-link btn btn-secondary">Change My Type</button>
             </form>
             <br />
             <form class="form-inline" method="post" asp-page-handler="Delete">
                 <input type="hidden" readonly value="@Model.Users.FirstOrDefault()"
-                        class="form-control" />
+                       class="form-control" />
                 <button type="submit" class="nav-link btn btn-danger">Delete Account</button>
             </form>
         </div>
@@ -50,7 +59,7 @@
     {
         <div class="card">
             <div class="card-body">
-                <p class="card-text float-left text-dark d-inline">@r.RouteID</p>
+                <p class="card-text float-left text-dark d-inline">@r.RouteId</p>
                 <h5 class="card-text">Endstop @r.Stops.First().StopAddress</h5>
                 <h5 class="card-text">Estimated Arrival @r.Stops.First().StopTimestamp.ToString("mm:hh dd/MM-yy")</h5>
             </div>

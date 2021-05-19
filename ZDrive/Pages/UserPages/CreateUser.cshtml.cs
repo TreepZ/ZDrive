@@ -20,7 +20,6 @@ namespace ZDrive.Pages.UserPages
         private IUserService service;
         private UserManager<IdentityUser> userManager;
         private RoleManager<IdentityRole> roleManager;
-
         public CreateUserModel(IUserService service, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             this.service = service;
@@ -36,6 +35,10 @@ namespace ZDrive.Pages.UserPages
             if (!ModelState.IsValid)
             {
                 return Page();
+            }
+            if (ZUser.UserType == "Driver")
+            {
+                var result2 = await userManager.AddToRoleAsync(userManager.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault(), "Driver");
             }
             var result = await userManager.AddToRoleAsync(userManager.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault(), "Passenger");
             ZUser.AspUserId = userManager.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault().Id;

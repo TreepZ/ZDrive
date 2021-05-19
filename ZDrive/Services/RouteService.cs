@@ -30,7 +30,8 @@ namespace ZDrive.Services
 
         public void DeleteRoute(Route r)
         {
-            throw new NotImplementedException();
+            server.Routes.Remove(r);
+            server.SaveChanges();
         }
 
         public Route GetRoute(int id)

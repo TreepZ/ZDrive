@@ -34,5 +34,12 @@ namespace ZDrive.Pages.RoutePages
                 route.Stops = StopService.AllStops().Where(s => s.RouteId == route.RouteId).ToList();
             }
         }
+
+        public IActionResult OnPostDelete(int rid, int uid)
+        {
+            Route r = RouteService.GetRoute(rid);
+            RouteService.DeleteRoute(r);
+            return RedirectToPage("User");
+        }
     }
 }

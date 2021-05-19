@@ -39,7 +39,11 @@ else
                 <div class="d-flex justify-content-around mt-4 mb-2">
                     <a class="btn btn-primary col-5" asp-page="/RoutePages/UpdateRoute" asp-route-rid="@route.RouteId">See
                         stops</a>
-                    <a class="btn btn-primary col-5">Delete</a>
+                    <form method="post" asp-route-rid="@route.RouteId" asp-route-uid="@route.UserId" asp-page-handler="delete"
+                class="col-5 p-0">
+                        <input class="btn btn-primary" style="min-width: 100%;" type="submit" value="Delete"
+                    onclick="return confirm('Are you sure?')">
+                    </form>
                 </div>
             </div>
         </div>

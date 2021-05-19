@@ -17,15 +17,17 @@ namespace ZDrive.Pages.RoutePages
         private IStopsService StopService;
         private ICarService CarService;
         private IReserveService reserveService;
+        private IUserService userService;
         public List<Route> Routes { get; set; }
         [BindProperty(SupportsGet = true)]
         public Stop Filter { get; set; }
-        public AllRoutesModel(IRouteService rService, IStopsService sService, ICarService cService, IReserveService reService)
+        public AllRoutesModel(IRouteService rService, IStopsService sService, ICarService cService, IReserveService reService, IUserService userService)
         {
             RouteService = rService;
             StopService = sService;
             CarService = cService;
             reserveService = reService;
+            this.userService = userService;
             Routes = new List<Route>();
         }
 
@@ -70,7 +72,7 @@ namespace ZDrive.Pages.RoutePages
             route.Car = CarService.AllCars().ToList().Find(c => c.Licenseplate == route.CarId);
             route.Car.AvailableSeats--;
             CarService.UpdateCar(route.Car);
-            reserveService.AddReservation(new ReservedSeat() { RouteId = rid, UserId = 3002 });
+            reserveService.AddReservation(new ReservedSeat() { RouteId = rid, UserId = userService.GetZUserByIdentityID(User.Identity.Name).UserId });
             OnGet();
             return Page();
         }

@@ -14,26 +14,31 @@ namespace ZDrive.Pages.RoutePages
     public class UsersOnRouteModel : PageModel
     {
         private IRouteService RouteService;
-        private IStopsService StopService;
         private IUserService UserService;
-        public List<Route> Routes { get; set; }
-        public int UserID { get; set; }
+        private IReserveService ReserveService;
+        public Route Route { get; set; }
+        public List<ZUser> ZUsers { get; set; }
 
-        public UsersOnRouteModel(IRouteService rService, IStopsService sService, IUserService uService)
+        public UsersOnRouteModel(IRouteService rService, IUserService uService, IReserveService ReserveService)
         {
             UserService = uService;
             RouteService = rService;
-            StopService = sService;
-            Routes = new List<Route>();
+            this.ReserveService = ReserveService;
+            ZUsers = new List<ZUser>();
         }
 
-        public void OnGet(int uid)
+        public void OnGet(int rid)
         {
-            Routes = RouteService.AllRoutes().Where(r => r.UserId == uid).ToList();
-            foreach (Route route in Routes)
+            Route = RouteService.AllRoutes().Where(r => r.RouteId == rid).FirstOrDefault();
+            IEnumerable<ReservedSeat> reservations = ReserveService.GetReservedSeats().Where(r => r.RouteId == rid);
+            foreach (var r in reservations)
+            {
+                ZUsers.Add(r.User);
+            }
+            /* foreach (Route route in Routes)
             {
                 route.Stops = StopService.AllStops().Where(s => s.RouteId == route.RouteId).ToList();
-            }
+            } */
         }
 
         public IActionResult OnPostDelete(int rid, int uid)

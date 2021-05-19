@@ -6,13 +6,14 @@
 <div class="text-center">
     <h1>All Users on this route</h1>
 </div>
-@foreach (var user in Model.Routes)
+@if (Model.ZUsers.Count() > 0)
 {
-    <div id="@user.UserId-card" class="shadow card m-3">
-        <div class="card-body p-3">
-            <h5>User ID @user.UserId</h5>
+    @foreach (var user in Model.ZUsers)
+    {
+        <div class="shadow card m-3">
+            <div class="card-body p-3">
+                <h5>User ID @user.UserId</h5>
+            </div>
         </div>
-
-
-    </div>
-        }
+    }
+}

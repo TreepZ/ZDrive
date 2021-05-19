@@ -25,7 +25,7 @@ namespace ZDrive.Services
 
         public IEnumerable<ReservedSeat> GetReservedSeats()
         {
-            return context.ReservedSeats.Include(r => r.Route);
+            return context.ReservedSeats.Include(r => r.Route).Include(r => r.User);
         }
     }
 }

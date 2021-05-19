@@ -22,7 +22,7 @@
         <label class="card-text-col-5" asp-for="@Model.Route.CarId">Car</label>
         @if (Model.Cars.Count == 0)
         {
-            <p class="form-control">No cars registered. <a asp-page="/UserPages/CreateCar">Add car?</a></p>
+            <p class="form-control">No cars registered. <a asp-page="/CarPages/CreateCar">Add car?</a></p>
         }
         else
         {

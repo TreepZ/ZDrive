@@ -18,7 +18,7 @@ namespace ZDrive.Pages.UserPages
     {
         private UserManager<IdentityUser> userManager;
         [BindProperty]
-        public ZUser User { get; set; }
+        public ZUser ZUser { get; set; }
         public IEnumerable<ZUser> Users { get; set; }
         public IEnumerable<ReservedSeat> ReservedSeats { get; set; }
         private IUserService service;
@@ -32,28 +32,28 @@ namespace ZDrive.Pages.UserPages
         public IActionResult OnGet()
         {
             Users = service.AllUsers();
-            User = Users.FirstOrDefault();
+            ZUser = Users.FirstOrDefault();
             ReservedSeats = reserveService.GetReservedSeats();
             return Page();
         }
         public IActionResult OnPost()
         {
-            User = Users.FirstOrDefault();
-            if (User.UserType == "Driver")
+            ZUser = Users.FirstOrDefault();
+            if (ZUser.UserType == "Driver")
             {
-                User.UserType = "Passenger";
+                ZUser.UserType = "Passenger";
             }
             else
             {
-                User.UserType = "Driver";
+                ZUser.UserType = "Driver";
             }
-            service.UpdateUser(User);
+            service.UpdateUser(ZUser);
             return Page();
         }
         public IActionResult OnPostDelete()
         {
-            User = Users.FirstOrDefault();
-            service.DeleteUser(User.UserId);
+            ZUser = Users.FirstOrDefault();
+            service.DeleteUser(ZUser.UserId);
             //LOGOUT HERE
             return Page();
         }

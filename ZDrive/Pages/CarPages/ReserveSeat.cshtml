@@ -12,13 +12,14 @@
             <h5 class="card-text">License Plate @car.Licenseplate</h5>
             <h5 class="card-text">Available seats @car.AvailableSeats / @car.NumberOfSeats</h5>
             <div class="d-flex justify-content-start mt-4 mb-2">
-                @if (car.AvailableSeats >= 1)
+                @if (!User.IsInRole("Driver") && car.AvailableSeats >= 1)
                 {
                     <form method="post" class="col-12">
                         <input type="hidden" asp-for="@Model.Car.Licenseplate" readonly value="@car.Licenseplate" />
                         <button type="submit" class="btn btn-primary col-5">Reserve Seat</button>
                     </form>
                 }
+                
             </div>
         </div>
     </div>

@@ -1,0 +1,32 @@
+@page
+@model ZDrive.Pages.CarPages.DeleteCarModel
+@{
+}
+
+<h1>Delete Car</h1>
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <form method="post">
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Car.Licenseplate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Car.AvailableSeats)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Car.NumberOfSeats)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Car.SizeOfCar)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Car.UserID)
+            </dt>
+        </dl>
+        <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure?')"/>
+    </form>
+    <div>
+        <a asp-page="/UserPages/UserCars">Back to List</a>
+    </div>
+</div>

@@ -9,9 +9,9 @@
 </div>
 <!-- Add new route link button -->
 @*@if (User.IsInRole("Driver"))
-{
-<a asp-page="/RoutePages/CreateRoute" asp-route-uid="@Model.Use" class="btn btn-primary m-3">Add Route</a>
-}*@
+    {
+    <a asp-page="/RoutePages/CreateRoute" asp-route-uid="@Model.Use" class="btn btn-primary m-3">Add Route</a>
+    }*@
 <button class="btn btn-primary m-3" onclick="$('#filterform').toggle()">Filter options</button>
 <form id="filterform" style="display: none; width:10em;" class="m-3" method="get">
     <label>Filter by address</label>
@@ -61,28 +61,36 @@
                 <a class="btn btn-primary col-5" asp-page="/RoutePages/UpdateRoute" asp-route-rid="@route.RouteId">
                     See stops
                 </a>
-                @if (route.Car.AvailableSeats <= 0)
+                @if (!Model.User.IsInRole("Driver"))
                 {
-                    <script>
-                        document.getElementById('@route.RouteId-card').style.backgroundColor = "gray";
-                        @* document.getElementById('@route.RouteId-ReserveBTN').style.display = "none"; *@
-                    </script>
-                    <input class="btn btn-primary-outline col-5" type="submit" value="Reserved" readonly />
+                    @if (route.Car.AvailableSeats <= 0)
+                    {
+                        <script>
+                            document.getElementById('@route.RouteId-card').style.backgroundColor = "gray";
+                            @* document.getElementById('@route.RouteId-ReserveBTN').style.display = "none"; *@
+                        </script>
+                        <input class="btn btn-primary-outline col-5" type="submit" value="Reserved" readonly />
+                    }
+                    else
+                    {
+                        <form method="post" class="col-5 p-0">
+                            <input class="btn btn-primary w-100" type="submit" value="Reserve" asp-route-rid="@route.RouteId" />
+                        </form>
+
+
+                    }
                 }
                 else
                 {
-                    <form method="post" class="col-5 p-0">
-                        <input class="btn btn-primary w-100" type="submit" value="Reserve" asp-route-rid="@route.RouteId" />
-                    </form>
+                    <a class="btn btn-primary col-5" asp-page="/RoutePages/UsersOnRoute" asp-route-rid="@route.RouteId">See
+                        Users</a>
+
                 }
-                <div class="btn btn-primary-outline col-5">
-                    <a class="btn btn-primary col-5" asp-page="/RoutePages/UsersOnRoute" asp-route-rid="@route.RouteId">See Users</a>
-                </div>
+
 
                 @*<a class="btn btn-primary col-5" asp-page="/UserPages/ReserveSeat"
-        asp-route-routeId="@route.RouteId">ReserveSeat</a>*@
+                    asp-route-routeId="@route.RouteId">ReserveSeat</a>*@
             </div>
-
         </div>
     </div>
 }

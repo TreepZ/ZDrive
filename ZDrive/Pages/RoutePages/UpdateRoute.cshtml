@@ -30,7 +30,10 @@
 }
 else
 {
-    <a asp-page="../StopPages/CreateStop" asp-route-routeId="@Model.Route.RouteId" class="btn btn-primary m-3">Add Stop</a>
+    if (Model.User.IsInRole("Driver"))
+    {
+        <a asp-page="../StopPages/CreateStop" asp-route-routeId="@Model.Route.RouteId" class="btn btn-primary m-3">Add Stop</a>
+    }
 }
 @* <button class="btn btn-primary m-3" onclick="$('#addstop').toggle()">Add Stop</button> *@
 @* <form id="addstop" style="display: none;" method="post" class="col-6">
@@ -58,12 +61,15 @@ else
             <h5 class="card-text">Stop ID @stop.StopId</h5>
             <h5 class="card-text">Address @stop.StopAddress</h5>
             <h5 class="card-text">Estimated Arrival @stop.StopTimestamp.ToString("mm:hh dd/MM-yy")</h5>
-            <div class="d-flex justify-content-around mt-4 mb-2">
-                <a asp-page="/StopPages/UpdateStop" asp-route-id="@stop.StopId" class="btn btn-primary col-5">
-                    Update Stop</a>
-                <a asp-page="/StopPages/DeleteRouteStop" asp-route-id="@stop.StopId" class="btn btn-primary col-5">
-                    Delete</a>
-            </div>
+            @if (Model.User.IsInRole("Driver"))
+            {
+                <div class="d-flex justify-content-around mt-4 mb-2">
+                    <a asp-page="/StopPages/UpdateStop" asp-route-id="@stop.StopId" class="btn btn-primary col-5">
+                        Update Stop</a>
+                    <a asp-page="/StopPages/DeleteRouteStop" asp-route-id="@stop.StopId" class="btn btn-primary col-5">
+                        Delete</a>
+                </div>
+            }
         </div>
     </div>
 }

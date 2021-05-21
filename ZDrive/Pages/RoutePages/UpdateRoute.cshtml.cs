@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ZDrive.Pages.RoutePages
 {
-    [Authorize(Roles = "Driver")]
+    [Authorize(Roles = "Passenger")]
     public class UpdateRouteModel : PageModel
     {
         private IRouteService Service;

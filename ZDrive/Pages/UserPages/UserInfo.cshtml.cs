@@ -16,18 +16,20 @@ namespace ZDrive.Pages.UserPages
     [Authorize(Roles = "Driver, Passenger")]
     public class UserInfoModel : PageModel
     {
-        private UserManager<IdentityUser> userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
         [BindProperty]
         public ZUser ZUser { get; set; }
-        public IEnumerable<ZUser> Users { get; set; }
         public IEnumerable<ReservedSeat> ReservedSeats { get; set; }
         private IUserService service;
         private IReserveService reserveService;
-        public UserInfoModel(IUserService service, IReserveService rService, UserManager<IdentityUser> userManager)
+        public UserInfoModel(IUserService service, IReserveService rService,
+                                UserManager<IdentityUser> usermanager,SignInManager<IdentityUser> signInManager)
         {
             this.service = service;
             reserveService = rService;
-            this.userManager = userManager;
+            _userManager = usermanager;
+            _signInManager = signInManager;
         }
         public IActionResult OnGet(string uid)
         {
@@ -37,7 +39,7 @@ namespace ZDrive.Pages.UserPages
         }
         public IActionResult OnPost()
         {
-            ZUser = Users.FirstOrDefault();
+            ZUser = service.AllUsers().FirstOrDefault();
             if (ZUser.UserType == "Driver")
             {
                 ZUser.UserType = "Passenger";
@@ -49,12 +51,14 @@ namespace ZDrive.Pages.UserPages
             service.UpdateUser(ZUser);
             return Page();
         }
-        public IActionResult OnPostDelete()
+        public async Task<IActionResult> OnPostDelete()
         {
-            ZUser = Users.FirstOrDefault();
             service.DeleteUser(ZUser.UserId);
-            //LOGOUT HERE
-            return Page();
+
+            IdentityUser user = await _userManager.GetUserAsync(User);
+            await _userManager.DeleteAsync(user);
+            await _signInManager.SignOutAsync();
+            return RedirectToPage("/Account/LogIn");
         }
     }
 }

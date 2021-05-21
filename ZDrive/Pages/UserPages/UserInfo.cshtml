@@ -43,11 +43,11 @@
                        class="form-control" />
                 <button type="submit" class="nav-link btn btn-secondary">Change My Type</button>
             </form>*@
-            <br />
             <form class="form-inline" method="post" asp-page-handler="Delete">
-                <input type="hidden" readonly value="@Model.ZUser"
-                       class="form-control" />
-                <button type="submit" class="nav-link btn btn-danger">Delete Account</button>
+                <input asp-for="@Model.ZUser.UserId" type="hidden" readonly value="@Model.ZUser.UserId" />
+                <button type="submit" class="nav-link btn btn-danger"
+                        onclick= "return confirm('Are you sure you wish to delete your profile?')">
+                        Delete Account</button>
             </form>
         </div>
     </div>

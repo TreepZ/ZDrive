@@ -20,16 +20,10 @@ namespace ZDrive.Pages.UserPages
         {
             this.service = service;
         }
-        public IActionResult OnGet(int? id = 1)
+        public IActionResult OnGet(int? id)
         {
-            if (id != null)
-            {
-                foreach (var u in service.AllUsers())
-                {
-                    if (u.UserId == id)
-                        User = u;
-                }
-            }
+            User = service.AllUsers().ToList().Find(user => user.UserId == id);
+
             return Page();
         }
         public IActionResult OnPost()
@@ -39,7 +33,9 @@ namespace ZDrive.Pages.UserPages
                 return Page();
             }
             service.UpdateUser(User);
-            return RedirectToPage("/UserPages/AllUsers");
+            return RedirectToPage("/UserPages/UserInfo", new { uid = User.AspUserId});
+
+            //return RedirectToPage("/CarPages/UserCars", new { uid = Car.UserId });
         }
     }
 }

@@ -29,10 +29,9 @@ namespace ZDrive.Pages.UserPages
             reserveService = rService;
             this.userManager = userManager;
         }
-        public IActionResult OnGet()
+        public IActionResult OnGet(string uid)
         {
-            Users = service.AllUsers();
-            ZUser = Users.FirstOrDefault();
+            ZUser = service.AllUsers().Where(user => user.AspUserId == uid).FirstOrDefault();
             ReservedSeats = reserveService.GetReservedSeats();
             return Page();
         }

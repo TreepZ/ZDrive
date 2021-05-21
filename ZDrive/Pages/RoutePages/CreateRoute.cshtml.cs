@@ -44,7 +44,9 @@ namespace ZDrive.Pages.RoutePages
             }
 
             RouteService.AddRoute(Route);
-            return Redirect($"/RoutePages/UserRoutes?uid={Route.UserId}");
+            return RedirectToPage("/RoutePages/UserRoutes", new { uid = Route.UserId});
+            //return Redirect($"/RoutePages/UserRoutes?uid={Route.UserId}");
+
         }
 
     }

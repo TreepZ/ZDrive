@@ -43,7 +43,8 @@ namespace ZDrive.Pages.RoutePages
             }
             StopService.AddStop(Stop);
 
-            return Redirect($"/RoutePages/UpdateRoute?rid={Stop.RouteId}");
+            return RedirectToPage("/RoutePages/UpdateRoute", new { rid = Stop.RouteId });
+            //return Redirect($"/RoutePages/UpdateRoute?rid={Stop.RouteId}");
         }
     }
 }

@@ -8,15 +8,15 @@
     <div class="card">
         <div class="card-body">
             <p class="card-text float-left text-dark d-inline">Username:</p>
-            <p class="card-text float-right text-info d-inline">@Model.Users.FirstOrDefault().UserName</p>
+            <p class="card-text float-right text-info d-inline">@Model.ZUser.UserName</p>
         </div>
         <div class="card-body">
             <p class="card-text float-left text-dark d-inline">E-mail:</p>
-            <p class="card-text float-right text-info d-inline">@Model.Users.FirstOrDefault().UserEmail</p>
+            <p class="card-text float-right text-info d-inline">@Model.ZUser.UserEmail</p>
         </div>
         <div class="card-body">
             <p class="card-text float-left text-dark d-inline">Type:</p>
-            <p class="card-text float-right text-info d-inline">@Model.Users.FirstOrDefault().UserType</p>
+            <p class="card-text float-right text-info d-inline">@Model.ZUser.UserType</p>
         </div>
         <div class="card-body">
             <p class="card-text float-left text-dark d-inline">Cars:</p>
@@ -38,14 +38,14 @@
                 <a class="btn btn-primary col-5" asp-page="/CarPages/UserCars" asp-route-uid="@Model.ZUser.UserId">Cars</a>
                 <a class="btn btn-primary col-5" asp-page="/RoutePages/UserRoutes" asp-route-uid="@Model.ZUser.UserId">Routes</a>
             </div>  
-            <form class="form-inline" method="post">
-                <input type="hidden" readonly value="@Model.Users.FirstOrDefault()"
+            @*<form class="form-inline" method="post">
+                <input type="hidden" readonly value="@Model.ZUser"
                        class="form-control" />
                 <button type="submit" class="nav-link btn btn-secondary">Change My Type</button>
-            </form>
+            </form>*@
             <br />
             <form class="form-inline" method="post" asp-page-handler="Delete">
-                <input type="hidden" readonly value="@Model.Users.FirstOrDefault()"
+                <input type="hidden" readonly value="@Model.ZUser"
                        class="form-control" />
                 <button type="submit" class="nav-link btn btn-danger">Delete Account</button>
             </form>
@@ -53,19 +53,7 @@
     </div>
 </div>
 
-<!--@if (Model.Users.FirstOrDefault().Routes.Count() != 0)
-{
-    @foreach (var r in Model.Users.FirstOrDefault().Routes)
-    {
-        <div class="card">
-            <div class="card-body">
-                <p class="card-text float-left text-dark d-inline">r.RouteId</p>
-                <h5 class="card-text">Endstop @r.Stops.First().StopAddress</h5>
-                <h5 class="card-text">Estimated Arrival @r.Stops.First().StopTimestamp.ToString("mm:hh dd/MM-yy")</h5>
-            </div>
-        </div>
-    }
-}-->
+
 
 <div class="card">
     <div class="card-body">

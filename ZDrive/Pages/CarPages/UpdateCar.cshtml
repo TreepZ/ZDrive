@@ -43,7 +43,8 @@
         <input type="hidden" asp-for="Car.UserId" value="@Model.Car.UserId" />
         <div class="d-flex justify-content-around mt-4 mb-2">
             <input class="btn btn-primary col-5" type="submit" value="Update" />
-            <a class="btn btn-primary col-5" asp-page="/Index">Go back</a>
+            <a class="btn btn-primary col-5" asp-route-uid="@Model.Car.UserId" asp-page="/CarPages/UserCars">
+                     Go back</a>
         </div>
     </div>
 </form>

@@ -29,7 +29,7 @@ namespace ZDrive.Pages.RoutePages
 
         public void OnGet(int rid)
         {
-            Route = RouteService.AllRoutes().Where(r => r.RouteId == rid).FirstOrDefault();
+            Route = RouteService.GetRoute(rid);
             IEnumerable<ReservedSeat> reservations = ReserveService.GetReservedSeats().Where(r => r.RouteId == rid);
             foreach (var r in reservations)
             {
@@ -46,6 +46,12 @@ namespace ZDrive.Pages.RoutePages
             Route r = RouteService.GetRoute(rid);
             RouteService.DeleteRoute(r);
             return RedirectToPage("User");
+        }
+
+        public IActionResult OnPostRemoveUser(int rid,int uid)
+        {
+            ReserveService.RemovePassenger(rid, uid);
+            return RedirectToPage("/RoutePages/UsersOnRoute", new { rid = rid });
         }
     }
 }

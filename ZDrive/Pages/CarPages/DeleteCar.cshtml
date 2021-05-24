@@ -37,6 +37,6 @@
         <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure? This will also delete all routes with this car')" />
     </form>
     <div>
-        <a asp-page="/UserPages/UserCars">Back to List</a>
+        <a asp-route-uid="@Model.Car.UserId" asp-page="/CarPages/UserCars">Back to List</a>
     </div>
 </div>

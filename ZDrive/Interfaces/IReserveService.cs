@@ -9,5 +9,6 @@ namespace ZDrive.Interfaces
     {
         void AddReservation(ReservedSeat seat);
         IEnumerable<ReservedSeat> GetReservedSeats();
+        void RemovePassenger(int rid, int uid);
     }
 }

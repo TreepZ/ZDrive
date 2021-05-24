@@ -6,14 +6,23 @@
 <div class="text-center">
     <h1>All Users on this route</h1>
 </div>
+
 @if (Model.ZUsers.Count() > 0)
 {
     @foreach (var user in Model.ZUsers)
     {
         <div class="shadow card m-3">
             <div class="card-body p-3">
-                <h5>User ID @user.UserId</h5>
+                <h5>ID @user.UserId</h5>
+                <h5 class="card-text">Name @user.UserName</h5>
+                <h5>Email @user.UserEmail</h5>
             </div>
+
+            <form method="post">
+                <input class="btn btn-primary col-2 w-100" type="submit" value="Remove"
+                       asp-route-rid="@Model.Route.RouteId" asp-route-uid="@user.UserId"
+                       asp-page-handler="RemoveUser" />
+            </form>
         </div>
     }
 }

@@ -2,7 +2,7 @@
 @model ZDrive.Pages.RoutePages.AllRoutesModel
 @{
 }
-
+<p style="color:red">@TempData["ErrorMessage"]</p>
 <!-- centers page title -->
 <div class="text-center">
     <h1>All Routes</h1>
@@ -76,20 +76,20 @@
                         <form method="post" class="col-5 p-0">
                             <input class="btn btn-primary w-100" type="submit" value="Reserve" asp-route-rid="@route.RouteId" />
                         </form>
-
-
                     }
                 }
                 else
                 {
-                    <a class="btn btn-primary col-5" asp-page="/RoutePages/UsersOnRoute" asp-route-rid="@route.RouteId">See
-                        Users</a>
+                    <a class="btn btn-primary col-5" asp-page="/RoutePages/UsersOnRoute" asp-route-rid="@route.RouteId">
+                        See
+                        Users
+                    </a>
 
                 }
 
 
                 @*<a class="btn btn-primary col-5" asp-page="/UserPages/ReserveSeat"
-                    asp-route-routeId="@route.RouteId">ReserveSeat</a>*@
+        asp-route-routeId="@route.RouteId">ReserveSeat</a>*@
             </div>
         </div>
     </div>

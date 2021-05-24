@@ -70,9 +70,17 @@ namespace ZDrive.Pages.RoutePages
         {
             Route route = RouteService.GetRoute(rid);
             route.Car = CarService.AllCars().ToList().Find(c => c.Licenseplate == route.CarId);
+            try
+            {
+                reserveService.AddReservation(new ReservedSeat() { RouteId = rid, UserId = userService.GetZUserByIdentityID(User.Identity.Name).UserId });
+            } catch(Exception e)
+            {
+                OnGet();
+                TempData["ErrorMessage"] = "You already have a seat on this route";
+                return Page();
+            }
             route.Car.AvailableSeats--;
             CarService.UpdateCar(route.Car);
-            reserveService.AddReservation(new ReservedSeat() { RouteId = rid, UserId = userService.GetZUserByIdentityID(User.Identity.Name).UserId });
             OnGet();
             return Page();
         }

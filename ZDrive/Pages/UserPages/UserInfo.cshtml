@@ -35,8 +35,11 @@
                     <input class="btn btn-primary" style="min-width: 100%;" type="submit" value="Delete"
                            onclick="return confirm('Are you sure?')">
                 </form>*@
-                <a class="btn btn-primary col-5" asp-page="/CarPages/UserCars" asp-route-uid="@Model.ZUser.UserId">Cars</a>
-                <a class="btn btn-primary col-5" asp-page="/RoutePages/UserRoutes" asp-route-uid="@Model.ZUser.UserId">Routes</a>
+                @if (Model.ZUser.UserType.Equals("Driver"))
+                {
+                    <a class="btn btn-primary col-5" asp-page="/CarPages/UserCars" asp-route-uid="@Model.ZUser.UserId">Cars</a>
+                    <a class="btn btn-primary col-5" asp-page="/RoutePages/UserRoutes" asp-route-uid="@Model.ZUser.UserId">Routes</a>
+                }
             </div>  
             @*<form class="form-inline" method="post">
                 <input type="hidden" readonly value="@Model.ZUser"

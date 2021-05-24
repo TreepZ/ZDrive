@@ -7,7 +7,7 @@
 *@
 <!-- centers page title -->
 <div class="text-center">
-    <h1>All Routes</h1>
+    <h1>Your routes</h1>
 </div>
 <!-- Add new route link button -->
 @* <a asp-page="/RoutePages/CreateRoute" asp-route-uid="@Model.UserID" class="btn btn-primary m-3">Add Route</a> *@
@@ -41,9 +41,9 @@ else
                     <a class="btn btn-primary col-5" asp-page="/RoutePages/UpdateRoute" asp-route-rid="@route.RouteId">See
                         stops</a>
                     <form method="post" asp-route-rid="@route.RouteId" asp-route-uid="@route.UserId" asp-page-handler="delete"
-                class="col-5 p-0">
+                        class="col-5 p-0">
                         <input class="btn btn-primary" style="min-width: 100%;" type="submit" value="Delete"
-                    onclick="return confirm('Are you sure?')">
+                        onclick="return confirm('Are you sure?')">
                     </form>
                 </div>
                 <div class="d-flex justify-content-around mt-4 mb-2">

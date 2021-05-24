@@ -36,7 +36,8 @@
         }
         <div class="d-flex justify-content-around mt-4 mb-2">
             <input class="btn btn-primary col-5" type="submit" value="Create" />
-            <a class="btn btn-primary col-5" asp-page="/Index">Go back</a>
+            <a class="btn btn-primary col-5" asp-route-uid="@Model.Route.UserId"
+                      asp-page="/RoutePages/UserRoutes">Go back</a>
         </div>
     </div>
 </form>

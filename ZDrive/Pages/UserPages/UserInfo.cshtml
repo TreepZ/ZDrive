@@ -31,10 +31,10 @@
         <div class="card-footer">
             <div class="d-flex justify-content-around mt-4 mb-2">
                 <a class="btn btn-primary col-5" asp-page="UpdateUser" asp-route-id="@Model.ZUser.UserId">Update</a>
-                <form method="post" asp-page-handler="Delete" class="col-5 p-0">
+                @*<form method="post" asp-page-handler="Delete" class="col-5 p-0">
                     <input class="btn btn-primary" style="min-width: 100%;" type="submit" value="Delete"
                            onclick="return confirm('Are you sure?')">
-                </form>
+                </form>*@
                 <a class="btn btn-primary col-5" asp-page="/CarPages/UserCars" asp-route-uid="@Model.ZUser.UserId">Cars</a>
                 <a class="btn btn-primary col-5" asp-page="/RoutePages/UserRoutes" asp-route-uid="@Model.ZUser.UserId">Routes</a>
             </div>  

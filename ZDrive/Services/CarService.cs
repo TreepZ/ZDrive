@@ -34,9 +34,13 @@ namespace ZDrive.Services
             server.SaveChanges();
         }
 
-        public void DeleteCar(Car c)
+        public void DeleteCar(string cid)
         {
-            server.Cars.Remove(c);
+            Car car = GetCar(cid);
+            Route route = server.Routes.ToList().Find(r => r.RouteId == car.Routes.FirstOrDefault().RouteId);
+
+            server.Cars.Remove(car);
+            server.Routes.Remove(route);
             server.SaveChanges();
         }
 

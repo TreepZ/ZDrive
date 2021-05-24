@@ -11,7 +11,7 @@ namespace ZDrive.Interfaces
     {
         IEnumerable<Car> AllCars();
         void AddCar(Car c);
-        void DeleteCar(Car c);
+        void DeleteCar(string cid);
         void UpdateCar(Car c);
         Car GetCar(string id);
     }

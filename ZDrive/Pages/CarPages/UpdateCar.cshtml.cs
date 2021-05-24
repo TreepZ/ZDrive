@@ -23,15 +23,13 @@ namespace ZDrive.Pages.CarPages
         {
             this.service = service;
         }
-        public IActionResult OnGet(int? userID)
+        public IActionResult OnGet(string cid)
         {
-            if (userID != null)
-            {
-                Car = service.AllCars().Where(c => c.UserId == userID).FirstOrDefault();
-            }
-            //Car.UserId = userID;
+            Car = service.AllCars().Where(c => c.Licenseplate == cid).FirstOrDefault();
+
             return Page();
         }
+
         public IActionResult OnPost()
         {
 

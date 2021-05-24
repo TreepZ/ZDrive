@@ -15,33 +15,22 @@ namespace ZDrive.Pages.CarPages
     [Authorize(Roles = "Driver")]
     public class DeleteCarModel : PageModel
     {
-        [BindProperty]
-        public Car Car { get; set; }
+        public Car Car { get; private set; }
         ICarService service;
 
         public DeleteCarModel(ICarService service)
         {
             this.service = service;
         }
-        public IActionResult OnGet(int? userID)
+        public void OnGet(string cid)
         {
-            if (userID != null)
-            {
-                Car = service.AllCars().Where(c => c.UserId == userID).FirstOrDefault();
-            }
-            //Car.UserId = userID;
-            return Page();
+            Car = service.AllCars().Where(c => c.Licenseplate == cid).FirstOrDefault();
         }
-        public IActionResult OnPost()
+        public IActionResult OnPost(string cid)
         {
-
-            if (!ModelState.IsValid)
-            {
-                return RedirectToPage("/CarPages/UserCars", new { uid = Car.UserId });
-            }
-
-            service.DeleteCar(Car);
-            return RedirectToPage("/CarPages/UserCars", new { uid = Car.UserId });
+            int returnID = service.GetCar(cid).UserId;
+            service.DeleteCar(cid);
+            return RedirectToPage("/CarPages/UserCars", new { uid = returnID });
         }
     }
 }

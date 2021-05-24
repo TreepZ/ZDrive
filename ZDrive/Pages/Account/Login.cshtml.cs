@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using ZDrive.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ZDrive.Pages.Account
 {
@@ -77,13 +78,21 @@ namespace ZDrive.Pages.Account
             var User = _userManager.Users.Where(u => u.Email == Input.Email).FirstOrDefault();
             returnUrl ??= Url.Content("~/");
 
+            if(User == null)
+            {
+                ModelState.AddModelError(string.Empty, "Incorrect email");
+                return Page();
+            }
+
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         
             if (ModelState.IsValid)
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+
                 var result = await _signInManager.PasswordSignInAsync(User.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");

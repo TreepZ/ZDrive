@@ -9,7 +9,7 @@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
             <label asp-for="Car.Licenseplate" class="control-label"></label>
-            <input asp-for="Car.Licenseplate" class="form-control" />
+            <input asp-for="Car.Licenseplate" maxlength="7" class="form-control" />
             <span asp-validation-for="Car.Licenseplate" class="text-danger"></span>
         </div>
         <div class="form-group">

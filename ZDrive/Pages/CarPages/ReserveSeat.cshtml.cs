@@ -26,7 +26,7 @@ namespace ZDrive.Pages.CarPages
         }
         public IActionResult OnGet(int routeId)
         {
-            Cars = carService.AllCars().Where(c => c.AvailableSeats >= 0);
+            Cars = carService.AllCars();
             return Page();
         }
         public IActionResult OnPost()

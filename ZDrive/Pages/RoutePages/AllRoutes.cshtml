@@ -15,7 +15,7 @@
 <button class="btn btn-primary m-3" onclick="$('#filterform').toggle()">Filter options</button>
 <form id="filterform" style="display: none; width:10em;" class="m-3" method="get">
     <label>Filter by address</label>
-    <input class="form-control" asp-for="@Model.Filter.StopAddress" type="text" />
+    <input class="form-control" asp-for="@Model.Filter" type="text" />
     <input type="submit" class="btn btn-outline-primary" value="Filter" />
     <br />
     <a href="/RoutePages/AllRoutes">Back to full list</a>

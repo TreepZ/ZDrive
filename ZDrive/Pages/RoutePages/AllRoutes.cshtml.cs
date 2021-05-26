@@ -20,8 +20,9 @@ namespace ZDrive.Pages.RoutePages
         private IUserService userService;
         public List<Route> Routes { get; set; }
         [BindProperty(SupportsGet = true)]
-        public Stop Filter { get; set; }
-        public AllRoutesModel(IRouteService rService, IStopsService sService, ICarService cService, IReserveService reService, IUserService userService)
+        public string Filter { get; set; }
+        public AllRoutesModel(IRouteService rService, IStopsService sService, ICarService cService, 
+                              IReserveService reService, IUserService userService)
         {
             RouteService = rService;
             StopService = sService;
@@ -33,9 +34,9 @@ namespace ZDrive.Pages.RoutePages
 
         public void OnGet()
         {
-            if (Filter.StopAddress != null)
+            if (Filter != null)
             {
-                List<Stop> stops = StopService.AllStops().Where(s => s.StopAddress.ToLower().Contains(Filter.StopAddress.ToLower())).ToList();
+                List<Stop> stops = StopService.AllStops().Where(s => s.StopAddress.ToLower().Contains(Filter.ToLower())).ToList();
                 Routes = GetRoutesByStops(stops).OrderBy(r => r.RouteId).ToList();
             }
             else

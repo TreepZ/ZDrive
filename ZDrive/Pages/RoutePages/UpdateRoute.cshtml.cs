@@ -15,14 +15,17 @@ namespace ZDrive.Pages.RoutePages
     {
         private IRouteService Service;
         private IStopsService StopService;
+        private IUserService UserService;
         public Route Route { get; set; }
         [BindProperty]
         public Stop Stop { get; set; }
+        public bool IsRouteOwner { get; private set; }
 
-        public UpdateRouteModel(IRouteService service, IStopsService stopService)
+        public UpdateRouteModel(IRouteService service, IStopsService stopService, IUserService userservice)
         {
             Service = service;
             StopService = stopService;
+            UserService = userservice;
             Route = new Route();
             Stop = new Stop();
         }
@@ -32,6 +35,10 @@ namespace ZDrive.Pages.RoutePages
             Stop.RouteId = rid;
             Route = Service.GetRoute(rid);
             Route.Stops = StopService.AllStops().Where(s => s.RouteId == rid).ToList();
+            if(Route.UserId == GetUserID())
+            {
+                IsRouteOwner = true;
+            }
         }
 
         public IActionResult OnPost()
@@ -45,6 +52,11 @@ namespace ZDrive.Pages.RoutePages
 
             return RedirectToPage("/RoutePages/UpdateRoute", new { rid = Stop.RouteId });
             //return Redirect($"/RoutePages/UpdateRoute?rid={Stop.RouteId}");
+        }
+
+        public int GetUserID()
+        {
+            return UserService.GetZUserByIdentityID(User.Identity.Name).UserId;
         }
     }
 }

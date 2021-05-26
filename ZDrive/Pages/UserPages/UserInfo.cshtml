@@ -2,10 +2,10 @@
 @model ZDrive.Pages.UserPages.UserInfoModel
 @{
 }
-<div class="float-left">
-    <img height="300" width="300"
+<div class="shadow card m-3">
+    <img class="float-right d-inline img-fluid"
         src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" />
-    <div class="card">
+    <div class="d-inline">
         <div class="card-body">
             <p class="card-text float-left text-dark d-inline">Username:</p>
             <p class="card-text float-right text-info d-inline">@Model.ZUser.UserName</p>
@@ -28,37 +28,40 @@
                 }
             }
         </div>
-        <div class="card-footer">
-            <div class="d-flex justify-content-around mt-4 mb-2">
-                <a class="btn btn-primary col-5" asp-page="UpdateUser" asp-route-id="@Model.ZUser.UserId">Update</a>
-                @*<form method="post" asp-page-handler="Delete" class="col-5 p-0">
-                    <input class="btn btn-primary" style="min-width: 100%;" type="submit" value="Delete"
-                           onclick="return confirm('Are you sure?')">
+    </div>
+    <div class="card-body">
+        <div class="d-flex justify-content-around mt-4 mb-2">
+            @*<form method="post" asp-page-handler="Delete" class="col-5 p-0">
+                <input class="btn btn-primary" style="min-width: 100%;" type="submit" value="Delete"
+                onclick="return confirm('Are you sure?')">
                 </form>*@
-                @if (Model.ZUser.UserType.Equals("Driver"))
-                {
-                    <a class="btn btn-primary col-5" asp-page="/CarPages/UserCars" asp-route-uid="@Model.ZUser.UserId">Cars</a>
-                    <a class="btn btn-primary col-5" asp-page="/RoutePages/UserRoutes" asp-route-uid="@Model.ZUser.UserId">Routes</a>
-                }
-            </div>  
+            @if (Model.ZUser.UserType.Equals("Driver"))
+            {
+                <a class="btn btn-primary col-5" asp-page="/CarPages/UserCars" asp-route-uid="@Model.ZUser.UserId">Cars</a>
+                <a class="btn btn-primary col-5" asp-page="/RoutePages/UserRoutes"
+                asp-route-uid="@Model.ZUser.UserId">Routes</a>
+            }
             @*<form class="form-inline" method="post">
                 <input type="hidden" readonly value="@Model.ZUser"
-                       class="form-control" />
+                class="form-control" />
                 <button type="submit" class="nav-link btn btn-secondary">Change My Type</button>
-            </form>*@
-            <form class="form-inline" method="post" asp-page-handler="Delete">
+                </form>*@
+
+        </div>
+        <div class="d-flex justify-content-around mt-4 mb-2">
+
+            <a class="btn btn-primary col-5" asp-page="UpdateUser" asp-route-id="@Model.ZUser.UserId">Update</a>
+            <form class="col-5 p-0" method="post" asp-page-handler="Delete">
                 <input asp-for="@Model.ZUser.UserId" type="hidden" readonly value="@Model.ZUser.UserId" />
-                <button type="submit" class="nav-link btn btn-danger"
-                        onclick= "return confirm('Are you sure you wish to delete your profile?')">
-                        Delete Account</button>
+                <button type="submit" class="btn btn-danger" style="min-width: 100%;"
+                    onclick="return confirm('Are you sure you wish to delete your profile?')">
+                    Delete Account</button>
             </form>
         </div>
     </div>
 </div>
 
-
-
-<div class="card">
+<div class="shadow card m-3">
     <div class="card-body">
         <h3 class="card-title">Currently booked seat on routes</h3>
         @if (Model.ReservedSeats.Count() != 0)

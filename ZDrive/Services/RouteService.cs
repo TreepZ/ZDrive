@@ -30,6 +30,16 @@ namespace ZDrive.Services
 
         public void DeleteRoute(Route r)
         {
+            r.ReservedSeats = server.ReservedSeats.Where(seat => seat.RouteId == r.RouteId).ToList();
+
+            if (r.ReservedSeats.Count > 0)
+            {
+                foreach (var seat in r.ReservedSeats)
+                {
+                    server.ReservedSeats.Remove(seat);
+                }
+            }
+
             server.Routes.Remove(r);
             server.SaveChanges();
         }

@@ -52,8 +52,23 @@ namespace ZDrive.Services
 
         public void DeleteUser(int id)
         {
-            ZUser @user = server.ZUsers.Where(us => us.UserId == id).FirstOrDefault();
+            ZUser @user = AllUsers().Where(us => us.UserId == id).FirstOrDefault();
+            user.ReservedSeats = server.ReservedSeats.Where(seat => seat.UserId == id).ToList();
+
+            if (user.ReservedSeats.Count > 0)
+            {
+                foreach (var seat in user.ReservedSeats)
+                {
+                    server.ReservedSeats.Remove(@seat);
+
+                    Car car = server.Cars.Where(c => c.UserId == id).FirstOrDefault();
+                    car.AvailableSeats++;
+                    server.Cars.Update(car);
+                }
+            }
+
             server.ZUsers.Remove(@user);
+
             server.SaveChanges();
         }
 

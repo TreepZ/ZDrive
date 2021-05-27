@@ -16,13 +16,13 @@
                 <h5>ID @user.UserId</h5>
                 <h5 class="card-text">Name @user.UserName</h5>
                 <h5>Email @user.UserEmail</h5>
+                <div class="d-flex justify-content-start mt-4 mb-2">
+                    <form method="post" class="col-5 p-0">
+                        <input class="btn btn-primary w-100" type="submit" value="Remove" asp-route-rid="@Model.Route.RouteId"
+                    asp-route-uid="@user.UserId" asp-page-handler="RemoveUser" />
+                    </form>
+                </div>
             </div>
-
-            <form method="post">
-                <input class="btn btn-primary col-2 w-100" type="submit" value="Remove"
-                       asp-route-rid="@Model.Route.RouteId" asp-route-uid="@user.UserId"
-                       asp-page-handler="RemoveUser" />
-            </form>
         </div>
     }
 }

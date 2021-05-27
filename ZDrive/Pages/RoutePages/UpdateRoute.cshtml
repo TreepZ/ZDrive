@@ -13,19 +13,12 @@
             <h5 class="card-text">Endstop @Model.Route.Stops.Last().StopAddress</h5>
             <h5 class="card-text">Estimated Arrival @Model.Route.Stops.Last().StopTimestamp.ToString("mm:hh dd/MM-yy")</h5>
         }
-        @* <div class="d-flex justify-content-around mt-4 mb-2">
-            <a class="btn btn-primary col-5" asp-page="/RoutePages/UpdateRoute" asp-route-rid="@route.RouteId">See
-            stops</a>
-            <a class="btn btn-primary col-5" asp-page="/UserPages/ReserveSeat"
-            asp-route-routeId="@route.RouteId">ReserveSeat</a>
-            </div> *@
     </div>
 </div>
 @if (@Model.Route.Car.AvailableSeats <= 0)
 {
     <script>
         document.getElementById('@Model.Route.RouteId-card').style.backgroundColor = "gray";
-        @* document.getElementById('@route.RouteId-ReserveBTN').style.display = "none"; *@
     </script>
 }
 else
@@ -35,25 +28,7 @@ else
         <a asp-page="../StopPages/CreateStop" asp-route-routeId="@Model.Route.RouteId" class="btn btn-primary m-3">Add Stop</a>
     }
 }
-@* <button class="btn btn-primary m-3" onclick="$('#addstop').toggle()">Add Stop</button> *@
-@* <form id="addstop" style="display: none;" method="post" class="col-6">
-    <div class="form-group">
-    <label asp-for="@Model.Stop.RouteId" class="control-label">Route ID</label>
-    <input asp-for="@Model.Stop.RouteId" value="@Model.Stop.RouteId" readonly type="text" class="form-control">
-    </div>
-    <div class="form-group">
-    <label asp-for="@Model.Stop.StopAddress" class="control-label">Stop Address</label>
-    <input asp-for="@Model.Stop.StopAddress" type="text" class="form-control">
-    <span asp-validation-for="@Model.Stop.StopAddress" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-    <label asp-for="@Model.Stop.StopTimestamp" class="control-label">Estimated arrival on stop</label>
-    <input asp-for="@Model.Stop.StopTimestamp" type="datetime-local" class="form-control">
-    <span asp-validation-for="@Model.Stop.StopTimestamp" class="text-danger"></span>
-    </div>
 
-    <input class="btn btn-primary" type="submit" value="Add Stop" />
-    </form> *@
 @foreach (var stop in Model.Route.Stops)
 {
     <div class="shadow card m-3">
@@ -73,43 +48,3 @@ else
         </div>
     </div>
 }
-@* <div class="row">
-    <form method="post" class="col-4">
-    <div class="form-group">
-    <label asp-for="@Model.Stop.RouteId" class="control-label">Route ID</label>
-    <input asp-for="@Model.Stop.RouteId" value="@Model.Stop.RouteId" readonly type="text" class="form-control">
-    </div>
-    <div class="form-group">
-    <label asp-for="@Model.Stop.StopAddress" class="control-label">Stop Address</label>
-    <input asp-for="@Model.Stop.StopAddress" type="text" class="form-control">
-    <span asp-validation-for="@Model.Stop.StopAddress" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-    <label asp-for="@Model.Stop.StopTimestamp" class="control-label">Estimated arrival on stop</label>
-    <input asp-for="@Model.Stop.StopTimestamp" type="datetime-local" class="form-control">
-    <span asp-validation-for="@Model.Stop.StopTimestamp" class="text-danger"></span>
-    </div>
-
-    <input class="btn btn-outline-primary" type="submit" value="Add" /> | <a asp-page="/RoutePages/UserRoutes"
-    asp-route-uid="@Model.Route.UserId">Back</a>
-    </form>
-
-
-    <table class="table col-6">
-    <thead>
-    <tr>
-    <th>Address</th>
-    <th>Estimated Arrival</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var stop in Model.Route.Stops)
-    {
-    <tr>
-    <td>@stop.StopAddress</td>
-    <td>@stop.StopTimestamp</td>
-    </tr>
-    }
-    </tbody>
-    </table>
-    </div> *@

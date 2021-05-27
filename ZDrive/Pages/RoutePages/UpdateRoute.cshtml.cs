@@ -51,7 +51,6 @@ namespace ZDrive.Pages.RoutePages
             StopService.AddStop(Stop);
 
             return RedirectToPage("/RoutePages/UpdateRoute", new { rid = Stop.RouteId });
-            //return Redirect($"/RoutePages/UpdateRoute?rid={Stop.RouteId}");
         }
 
         public int GetUserID()

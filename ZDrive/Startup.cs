@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
 namespace ZDrive
-{ //Oliver er en bitch
+{
     public class Startup
     {
         public Startup(IConfiguration configuration)

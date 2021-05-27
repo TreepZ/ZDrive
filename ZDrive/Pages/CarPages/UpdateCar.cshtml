@@ -35,11 +35,6 @@
             </select>
             <span asp-validation-for="Car.SizeOfCar" class="text-danger"></span>
         </div>
-        @*<div class="form-group">
-            <label asp-for="Car.UserId" class="control-label"></label>
-            <input asp-for="Car.UserId" class="form-control" />
-            <span asp-validation-for="Car.UserId" class="text-danger"></span>
-            </div> *@
         <input type="hidden" asp-for="Car.UserId" value="@Model.Car.UserId" />
         <div class="d-flex justify-content-around mt-4 mb-2">
             <input class="btn btn-primary col-5" type="submit" value="Update" />

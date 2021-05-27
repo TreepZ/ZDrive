@@ -24,30 +24,3 @@
         </div>
     </div>
 }
-
-@* <table class="table table-striped">
-    <thead class="thead-dark">
-    <tr>
-    <th>ID</th>
-    <th>Address</th>
-    <th>Estimated Arrival</th>
-    <th>Route?</th>
-    <th>Info</th>
-    </tr>
-    </thead>
-    <tbody>
-    @if (Model.Stops != null)
-    {
-    @foreach (var s in Model.Stops)
-    {
-    <tr>
-    <td>@s.StopId</td>
-    <td>@s.StopAddress</td>
-    <td>@s.StopTimestamp</td>
-    <td>@s.RouteId</td>
-    <td><a asp-page="./StopInfo" asp-route-stopID="@s.StopId" asp-route-routeID="@s.RouteId">See info</a></td>
-    </tr>
-    }
-    }
-    </tbody>
-    </table> *@

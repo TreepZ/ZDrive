@@ -35,10 +35,6 @@ namespace ZDrive.Pages.RoutePages
             {
                 ZUsers.Add(r.User);
             }
-            /* foreach (Route route in Routes)
-            {
-                route.Stops = StopService.AllStops().Where(s => s.RouteId == route.RouteId).ToList();
-            } */
         }
 
         public IActionResult OnPostDelete(int rid, int uid)

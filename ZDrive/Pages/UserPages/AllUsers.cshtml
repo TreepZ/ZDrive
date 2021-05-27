@@ -24,46 +24,6 @@
             <h5 class="card-text">User ID @user.UserId</h5>
             <h5 class="card-text">Type @user.UserType</h5>
             <h5 class="card-text">Name @user.UserName</h5>
-            @*<div class="d-flex justify-content-around mt-4 mb-2">
-                <a class="btn btn-primary col-5" asp-page="/CarPages/UserCars" asp-route-uid="@user.UserId">Cars</a>
-                <a class="btn btn-primary col-5" asp-page="/RoutePages/UserRoutes" asp-route-uid="@user.UserId">Routes</a>
-            </div>*@
-            <!--<div class="d-flex justify-content-around mt-4 mb-2">
-                <a class="btn btn-primary col-5" asp-page="UpdateUser" asp-route-id="@user.UserId">Update</a>
-                <form method="post" asp-page-handler="Delete" class="col-5 p-0">
-                    <input type="hidden" asp-for="@Model.Filter.UserId" value="@user.UserId">
-                    <input class="btn btn-primary" style="min-width: 100%;" type="submit" value="Delete"
-                    onclick="return confirm('Are you sure?')">
-                </form>-->
-                @* <a class="btn btn-primary col-5" asp-page="DeleteUser" asp-route-id="@user.UserId">Delete</a> *@
-            <!--</div>-->
         </div>
     </div>
 }
-@*
-    <table class="table">
-    <thead>
-    <tr>
-    <th>ID</th>
-    <th>Type</th>
-    <th>Name</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var user in Model.Users)
-    {
-    <tr>
-    <td>@user.UserId</td>
-    <td>@user.UserType</td>
-    <td>@user.UserName</td>
-    @if (user.UserType == "Driver")
-    {
-    <td><a asp-page="/UserPages/UserCars" asp-route-uid="@user.UserId">Cars</a></td>
-    <td><a asp-page="/RoutePages/UserRoutes" asp-route-uid="@user.UserId">Routes</a></td>
-    }
-    <td><a asp-page="UpdateUser" asp-route-id="@user.UserId">Update</a></td>
-    <td><a asp-page="DeleteUser" asp-route-id="@user.UserId">Delete</a></td>
-    </tr>
-    }
-    </tbody>
-    </table> *@

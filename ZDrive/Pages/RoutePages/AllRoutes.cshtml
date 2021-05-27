@@ -3,15 +3,9 @@
 @{
 }
 <p style="color:red">@TempData["ErrorMessage"]</p>
-<!-- centers page title -->
 <div class="text-center">
     <h1>All Routes</h1>
 </div>
-<!-- Add new route link button -->
-@*@if (User.IsInRole("Driver"))
-    {
-    <a asp-page="/RoutePages/CreateRoute" asp-route-uid="@Model.Use" class="btn btn-primary m-3">Add Route</a>
-    }*@
 <button class="btn btn-primary m-3" onclick="$('#filterform').toggle()">Filter options</button>
 <form id="filterform" style="display: none; width:10em;" class="m-3" method="get">
     <label>Filter by address</label>
@@ -20,29 +14,7 @@
     <br />
     <a href="/RoutePages/AllRoutes">Back to full list</a>
 </form>
-@* <table class="table">
-    @foreach (var route in Model.Routes)
-    {
-    <thead style="background-color:lightgray" onclick="$('#@route.RouteId').toggle()">
-    <tr>
-    <th>Route: @route.RouteId</th>
-    <th><a asp-page="/RoutePages/UpdateRoute" asp-route-rid="@route.RouteId">Update</a></th>
-    <th><a asp-page="/UserPages/ReserveSeat" asp-route-routeId="@route.RouteId">ReserveSeat</a></th>
-    </tr>
-    </thead>
-    <tbody style="display: none;" id="@route.RouteId">
-    @foreach (var stop in route.Stops)
-    {
-    <tr>
-    <td>@stop.StopAddress</td>
-    <td>@stop.StopTimestamp</td>
-    </tr>
-    }
-    </tbody>
-    }
-    </table> *@
 
-<!-- Custom html -->
 @foreach (var route in Model.Routes)
 {
     <div id="@route.RouteId-card" class="shadow card m-3">
@@ -67,7 +39,6 @@
                     {
                         <script>
                             document.getElementById('@route.RouteId-card').style.backgroundColor = "gray";
-                            @* document.getElementById('@route.RouteId-ReserveBTN').style.display = "none"; *@
                         </script>
                         <input class="btn btn-primary-outline col-5" type="submit" value="Reserved" readonly />
                     }
@@ -87,9 +58,6 @@
 
                 }
 
-
-                @*<a class="btn btn-primary col-5" asp-page="/UserPages/ReserveSeat"
-        asp-route-routeId="@route.RouteId">ReserveSeat</a>*@
             </div>
         </div>
     </div>

@@ -34,8 +34,6 @@ namespace ZDrive.Pages.UserPages
             }
             service.UpdateUser(User);
             return RedirectToPage("/UserPages/UserInfo", new { uid = User.AspUserId});
-
-            //return RedirectToPage("/CarPages/UserCars", new { uid = Car.UserId });
         }
     }
 }

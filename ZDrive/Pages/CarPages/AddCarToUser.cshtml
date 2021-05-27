@@ -3,7 +3,6 @@
 @{
 }
 <h1>List of available cars</h1>
-@* <a href="/UserPages/CreateCar">Create new car</a> *@
 <table class="table">
     <thead>
         <tr>
@@ -13,7 +12,6 @@
         </tr>
     </thead>
     <tbody>
-        <!-- OwO -->
         @if (Model.Cars.Count() > 0)
         {
             @foreach (var item in Model.Cars)

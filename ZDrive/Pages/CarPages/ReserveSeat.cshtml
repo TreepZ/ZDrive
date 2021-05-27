@@ -24,34 +24,3 @@
         </div>
     </div>
 }
-@* <table class="table">
-    <thead>
-    <tr>
-    <th>License Plate</th>
-    <th>Available seats</th>
-    <th> </th>
-    </tr>
-    </thead>
-    <tbody>
-    <!-- OwO -->
-    @if (Model.Cars.Count() > 0)
-    {
-    @foreach (var item in Model.Cars)
-    {
-    <tr>
-    <td>@item.Licenseplate</td>
-    <td>@item.AvailableSeats / @item.NumberOfSeats</td>
-    <td>
-    @if (item.AvailableSeats >= 1)
-    {
-    <form method="post">
-    <input type="hidden" asp-for="@Model.Car.Licenseplate" readonly value="@item.Licenseplate"
-    class="form-control" />
-    <button type="submit" class="btn-primary">Reserve Seat</button>
-    </form>
-    }
-    </td>
-    </tr>
-    }
-    }
-    </table> *@

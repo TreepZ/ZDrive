@@ -35,7 +35,6 @@ namespace ZDrive.Pages.StopPages
             {
                 return Page();
             }
-            //AddStop.StopTimestamp = DateTime.Now;
             stopService.AddStop(AddStop);
             if (AddStop.RouteId == null)
             {

@@ -30,7 +30,7 @@
 }
 else
 {
-    if (Model.User.IsInRole("Driver"))
+    if (Model.User.IsInRole("Driver") && Model.IsRouteOwner)
     {
         <a asp-page="../StopPages/CreateStop" asp-route-routeId="@Model.Route.RouteId" class="btn btn-primary m-3">Add Stop</a>
     }
